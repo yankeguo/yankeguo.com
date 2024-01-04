@@ -23,7 +23,7 @@ watch(localTimeUpdater, updateLocalTime);
 
 <template>
   <Head>
-    <Title>guoyk.xyz</Title>
+    <Title>Yanke Guo</Title>
   </Head>
   <div class="flex flex-col items-center justify-center w-full pt-24">
     <img
