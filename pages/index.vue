@@ -142,7 +142,9 @@ watch(localTimeUpdater, updateLocalTime);
   <Head>
     <Title>Yanke Guo</Title>
   </Head>
-  <div class="flex flex-col items-center justify-center w-full pt-16 pb-16">
+  <div
+    class="flex flex-col items-center justify-center w-full sm:w-2/3 md:1/2 lg:w-1/3 mx-auto pt-16 pb-12"
+  >
     <img
       class="rounded-full w-32"
       src="~/assets/avatar-pro.jpg"
@@ -171,14 +173,12 @@ watch(localTimeUpdater, updateLocalTime);
     </div>
 
     <template v-for="(itemGroup, idx) in links" v-bind:key="idx">
-      <div
+      <UDivider
         v-if="itemGroup.title"
-        class="mb-4 flex flex-row justify-center items-center text-orange-500"
-      >
-        <div class="w-24 border-t border-orange-500"></div>
-        <div class="mx-4">{{ itemGroup.title }}</div>
-        <div class="w-24 border-t border-orange-500"></div>
-      </div>
+        :label="itemGroup.title"
+        :ui="{ label: 'text-orange-500 dark:text-orange-400' }"
+        class="mt-2 mb-6"
+      ></UDivider>
 
       <div class="mb-4 flex flex-row justify-center items-center">
         <UButton
