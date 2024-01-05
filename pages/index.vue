@@ -142,7 +142,7 @@ watch(localTimeUpdater, updateLocalTime);
   <Head>
     <Title>Yanke Guo</Title>
   </Head>
-  <div class="flex flex-col items-center justify-center w-full py-16">
+  <div class="flex flex-col items-center justify-center w-full pt-16 pb-16">
     <img
       class="rounded-full w-32"
       src="~/assets/avatar-pro.jpg"
@@ -157,7 +157,7 @@ watch(localTimeUpdater, updateLocalTime);
     </div>
 
     <div
-      class="mb-16 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+      class="mt-4 mb-12 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
     >
       <div class="flex flex-row items-center ms-2">
         <UIcon name="i-heroicons-map-pin"></UIcon>
