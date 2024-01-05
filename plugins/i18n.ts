@@ -7,6 +7,8 @@ const en = {
   simpleIndex: {
     lastwill: "Alive?",
     pronouns: "him",
+    donation: "donation",
+    vault: "vault",
   },
   intro: {
     location: "Shenzhen, China",
@@ -145,6 +147,8 @@ const zh: typeof en = {
   simpleIndex: {
     lastwill: "存活?",
     pronouns: "他",
+    donation: "赞助",
+    vault: "保管箱",
   },
   nav: {
     external: "外部",
