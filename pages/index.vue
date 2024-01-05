@@ -156,6 +156,14 @@ watch(localTimeUpdater, updateLocalTime);
         :to="hrefInstagram"
         target="_blank"
       ></UButton>
+
+      <UButton
+        variant="ghost"
+        :label="$t('simpleIndex.lastwill')"
+        icon="i-heroicons-light-bulb"
+        :to="hrefLastWill"
+        target="_blank"
+      ></UButton>
     </div>
 
     <IndexSeperator :title="$t('simpleIndex.donation')"></IndexSeperator>
@@ -193,18 +201,6 @@ watch(localTimeUpdater, updateLocalTime);
         variant="ghost"
         icon="i-simple-icons-opensea"
         :to="hrefOpenSea"
-        target="_blank"
-      ></UButton>
-    </div>
-
-    <IndexSeperator :title="$t('simpleIndex.vault')"></IndexSeperator>
-
-    <div class="mt-4 flex flex-row justify-center items-center">
-      <UButton
-        variant="ghost"
-        :label="$t('simpleIndex.lastwill')"
-        icon="i-heroicons-light-bulb"
-        :to="hrefLastWill"
         target="_blank"
       ></UButton>
     </div>
