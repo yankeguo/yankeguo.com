@@ -19,7 +19,7 @@ function setLanguage(lang: string) {
 </script>
 
 <template>
-  <div class="mt-8 md:mt-24 mb-2 flex flex-row justify-center items-center">
+  <div class="mb-2 flex flex-row justify-center items-center">
     <ClientOnly>
       <!-- i18n -->
       <template v-for="(item, idx) in $langs">
