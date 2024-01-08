@@ -17,9 +17,9 @@
   "dependencies": {
     "@iconify-json/bi": "^1.1.23",
     "@iconify-json/noto-v1": "^1.1.11",
-    "@iconify-json/simple-icons": "^1.1.86",
+    "@iconify-json/simple-icons": "^1.1.87",
     "@nuxt/ui": "^2.11.1",
     "@tailwindcss/typography": "^0.5.10",
-    "resolve-accept-language": "^2.1.13"
+    "resolve-accept-language": "^2.1.14"
   }
 }

@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.1.11
     version: 1.1.11
   '@iconify-json/simple-icons':
-    specifier: ^1.1.86
-    version: 1.1.86
+    specifier: ^1.1.87
+    version: 1.1.87
   '@nuxt/ui':
     specifier: ^2.11.1
     version: 2.11.1(nuxt@3.9.1)(vite@5.0.11)(vue@3.4.5)
@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.1)
   resolve-accept-language:
-    specifier: ^2.1.13
-    version: 2.1.13
+    specifier: ^2.1.14
+    version: 2.1.14
 
 devDependencies:
   nuxt:
@@ -630,14 +630,14 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/simple-icons@1.1.86:
-    resolution: {integrity: sha512-rD5VlIgiOBPDcVQUCNbGu31WRYt+bj6bWFjH6+KEsxK/hDZTzylT5odF4Jo85PJUGZeJcGn18woE6P6I1Jiuxg==}
+  /@iconify-json/simple-icons@1.1.87:
+    resolution: {integrity: sha512-DNAWoLDgboIGVoqZBPWM25MPKdIjGnNgZYEBqrWcoPkaYF0q1jZEzTyC2y8yCOTTSrcSjhASk9CrMK+INfpnwQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/collections@1.0.377:
-    resolution: {integrity: sha512-1p0P6l9/u/15UAutechAD1AnPuJVdk2g199GtfYmqUDVoILPsPp6G090f/f6EBCkX2PDpQE9RqNzpe0EiXoHzA==}
+  /@iconify/collections@1.0.378:
+    resolution: {integrity: sha512-O9MMl2e/zvLokzMvxAdCgS3+YMYPOoQJyXxW49hPXNm4BdCPjy2OXduappfGc8liVFt27O5BQMxVXGyKjeBvcg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
@@ -1622,10 +1622,10 @@ packages:
   /@types/http-proxy@1.17.14:
     resolution: {integrity: sha512-SSrD0c1OQzlFX7pGu1eXxSEjemej64aaNPRhhVYUGqXh0BtldAAx37MG8btcumvpgKyZp1F5Gn3JkktdxiFv6w==}
     dependencies:
-      '@types/node': 20.10.6
+      '@types/node': 20.10.7
 
-  /@types/node@20.10.6:
-    resolution: {integrity: sha512-Vac8H+NlRNNlAmDfGUP7b5h/KA+AtWIzuXy0E6OyP8f1tCLYAtPvKRRDJjAPqhpCb0t6U2j7/xqAuLEebW2kiw==}
+  /@types/node@20.10.7:
+    resolution: {integrity: sha512-fRbIKb8C/Y2lXxB5eVMj4IU7xpdox0Lh8bUPEdtLysaylsml1hOOx1+STloRs/B9nf7C6kPRmmg/V7aQW7usNg==}
     dependencies:
       undici-types: 5.26.5
 
@@ -1684,7 +1684,7 @@ packages:
       glob: 7.2.3
       graceful-fs: 4.2.11
       micromatch: 4.0.5
-      node-gyp-build: 4.7.1
+      node-gyp-build: 4.8.0
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - encoding
@@ -2092,7 +2092,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.2
-      caniuse-lite: 1.0.30001574
+      caniuse-lite: 1.0.30001576
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2152,7 +2152,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001574
+      caniuse-lite: 1.0.30001576
       electron-to-chromium: 1.4.623
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
@@ -2240,12 +2240,12 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.22.2
-      caniuse-lite: 1.0.30001574
+      caniuse-lite: 1.0.30001576
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
-  /caniuse-lite@1.0.30001574:
-    resolution: {integrity: sha512-BtYEK4r/iHt/txm81KBudCUcTy7t+s9emrIaHqjYurQ10x71zJ5VQ9x1dYPcz/b+pKSp4y/v1xSI67A+LzpNyg==}
+  /caniuse-lite@1.0.30001576:
+    resolution: {integrity: sha512-ff5BdakGe2P3SQsMsiqmt1Lc8221NR1VzHj5jXN5vBny9A6fpze94HiVV/n7XRosOlsShJcvMv5mdnpjOGCEgg==}
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -4066,8 +4066,8 @@ packages:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
     engines: {node: '>= 6.13.0'}
 
-  /node-gyp-build@4.7.1:
-    resolution: {integrity: sha512-wTSrZ+8lsRRa3I3H8Xr65dLWSgCvY2l4AOnaeKdPA9TB/WYMPaTcrzf3rXvFoVvjKNVnu0CcWSx54qq9GKRUYg==}
+  /node-gyp-build@4.8.0:
+    resolution: {integrity: sha512-u6fs2AEUljNho3EYTJNBfImO5QTo/J/1Etd+NVdCj7qWKUSN/bSLkZwhDv7I+w/MSC6qJ4cknepkAYykDdK8og==}
     hasBin: true
 
   /node-gyp@10.0.1:
@@ -4211,7 +4211,7 @@ packages:
   /nuxt-icon@0.6.8(nuxt@3.9.1)(vite@5.0.11)(vue@3.4.5):
     resolution: {integrity: sha512-6eWlNOb6Uvp63uXFdhcmsB1JlubDv76Pot/VwmIu0yJxDYhwytbnv3WAjw2khl2l7W/65V4eMGIEeX9C5Ahxng==}
     dependencies:
-      '@iconify/collections': 1.0.377
+      '@iconify/collections': 1.0.378
       '@iconify/vue': 4.1.1(vue@3.4.5)
       '@nuxt/devtools-kit': 1.0.6(nuxt@3.9.1)(vite@5.0.11)
       '@nuxt/kit': 3.9.1
@@ -5061,8 +5061,8 @@ packages:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
 
-  /resolve-accept-language@2.1.13:
-    resolution: {integrity: sha512-6y2pv5eFBxxGCwtzIg/tKMrspv2awSMQY7of8Ie0wLa2lr8MTlxWP3R5LTlt86ApYbXIy78XjphuKYnTY+kdDQ==}
+  /resolve-accept-language@2.1.14:
+    resolution: {integrity: sha512-oJqJvkKbILkVPbEPsOUFLlkN2Lqp+Gqj07K9RqSok8S9GYXOv1HmY0iGgYsGJiIPlzqKwNduEtLrcjtK48U9Fw==}
     engines: {node: ^14.18.1 || >=16.0.0}
     dev: false
 
