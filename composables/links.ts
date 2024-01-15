@@ -19,7 +19,7 @@ export const hrefBitcoin = `https://www.blockchain.com/btc/address/${addressBitc
 export const hrefEthereum = `https://etherscan.io/address/${addressEthereum}`;
 export const hrefOpenSea = "https://opensea.io/collection/shenzhen-b-side";
 export const hrefHuggingFace = "https://huggingface.co/yankeguo";
-export const hrefTwitter = "https://twitter.com/yankeguo";
+export const hrefTwitter = "https://x.com/yankeguo";
 export const hrefYoutube =
   "https://www.youtube.com/channel/UCkSvr8FfSjkiLc8nBwsAGuw";
 

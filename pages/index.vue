@@ -69,7 +69,7 @@ const links: {
   {
     items: [
       {
-        icon: "i-simple-icons-twitter",
+        icon: "i-simple-icons-x",
         to: hrefTwitter,
       },
       {
