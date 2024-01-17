@@ -2,6 +2,7 @@ const usernamePatreon = "yankeguo";
 const usernameGithub = "yankeguo";
 const usernameTelegram = "yankeguo";
 
+export const hrefWiseTag = "https://wise.com/pay/me/yankeg";
 export const hrefMail = "mailto:hi@yankeguo.com";
 export const hrefGPG = "https://keys.openpgp.org/search?q=hi@yankeguo.com";
 export const hrefLastWill = `https://${usernameGithub}.github.io/lastwill/`;

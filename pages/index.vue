@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { $t } = useNuxtApp();
 import { useInterval } from "@vueuse/core";
+import { hrefWiseTag } from "~/composables/links";
 
 definePageMeta({
   layout: "navless",
@@ -98,6 +99,10 @@ const links: {
   {
     title: $t("simpleIndex.donation"),
     items: [
+      {
+        icon: "i-simple-icons-wise",
+        to: hrefWiseTag,
+      },
       {
         icon: "i-simple-icons-github",
         to: hrefGithubSponsors,
