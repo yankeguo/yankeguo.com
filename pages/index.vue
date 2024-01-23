@@ -119,10 +119,6 @@ const links: {
         icon: "i-simple-icons-ethereum",
         to: hrefEthereum,
       },
-      {
-        icon: "i-simple-icons-opensea",
-        to: hrefOpenSea,
-      },
     ],
   },
 ];
