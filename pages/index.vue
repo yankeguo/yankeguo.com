@@ -148,7 +148,7 @@ watch(localTimeUpdater, updateLocalTime);
   >
     <img
       class="rounded-full w-32"
-      src="~/assets/avatar-pro.jpg"
+      src="~/assets/avatar-cartoon.jpg"
       alt="photo of me"
     />
 
