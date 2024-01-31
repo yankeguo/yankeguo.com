@@ -204,10 +204,10 @@ const onParticlesLoad = (container: Container) => {
       <NuxtParticles id="tsparticles" :options="optionsParticles" @load="onParticlesLoad"></NuxtParticles>
     </div>
 
-    <div class="absolute top-0 left-0 bottom-12 right-0 flex flex-col items-center justify-center">
+    <div class="mt-16 flex flex-col items-center justify-center">
       <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
 
-      <div class="mt-8 flex flex-row justify-center items-baseline">
+      <div class="mt-12 flex flex-row justify-center items-baseline">
         <span class="font-bold text-3xl">Yanke Guo</span>
         <span class="ms-2 text-sm text-slate-600 dark:text-slate-400">({{ $t("pronouns") }})</span>
       </div>
@@ -245,7 +245,7 @@ const onParticlesLoad = (container: Container) => {
         </div>
       </UCard>
 
-      <Footer class="mt-12"></Footer>
+      <Footer class="mt-12 mb-16"></Footer>
     </div>
 
   </Body>
