@@ -220,7 +220,9 @@ const onParticlesLoad = (container: Container) => {
 
         <div class="flex flex-row items-center ms-4">
           <UIcon name="i-heroicons-clock"></UIcon>
-          <span class="ms-1">{{ localTime }}</span>
+          <ClientOnly>
+            <span class="ms-1">{{ localTime }}</span>
+          </ClientOnly>
         </div>
       </div>
 
