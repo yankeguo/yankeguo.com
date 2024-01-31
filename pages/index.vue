@@ -130,7 +130,7 @@ function updateLocalTime() {
   localTime.value = new Date().toLocaleTimeString("en-US", {
     timeZone: "Asia/Shanghai",
     hour12: true,
-    timeStyle: "short",
+    timeStyle: "medium",
   });
 }
 
@@ -225,12 +225,12 @@ const onParticlesLoad = (container: Container) => {
       </div>
 
       <div class="mt-4 mb-12 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400">
-        <div class="flex flex-row items-center ms-2">
+        <div class="flex flex-row items-center">
           <UIcon name="i-heroicons-map-pin"></UIcon>
           <span class="ms-1">{{ $t("location") }}</span>
         </div>
 
-        <div class="flex flex-row items-center ms-2">
+        <div class="flex flex-row items-center ms-4">
           <UIcon name="i-heroicons-clock"></UIcon>
           <span class="ms-1">{{ localTime }}</span>
         </div>
