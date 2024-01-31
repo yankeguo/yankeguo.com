@@ -2,8 +2,8 @@
 </script>
 
 <template>
+  <NuxtLoadingIndicator color="#0369a1" />
   <NuxtLayout>
-    <NuxtLoadingIndicator color="#0369a1" />
     <NuxtPage />
     <UNotifications />
   </NuxtLayout>
