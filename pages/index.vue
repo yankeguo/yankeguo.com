@@ -5,123 +5,111 @@ import type { Container } from "tsparticles-engine";
 
 const { $t } = useNuxtApp();
 
-const links: {
-  icon?: string;
-  title?: string;
-  items: {
-    label?: string;
-    icon: string;
-    to: string;
-  }[];
-}[] = [
+type Link = {
+  label?: string;
+  icon: string;
+  to: string;
+};
+
+const linksSocial: Link[][] = [
+  [
     {
-      items: [
-        {
-          label: "Telegram",
-          icon: "i-simple-icons-telegram",
-          to: hrefTelegram,
-        },
-        {
-          label: "Email",
-          icon: "i-heroicons-envelope",
-          to: hrefMail,
-        },
-        {
-          label: "GPG",
-          icon: "i-heroicons-lock-closed",
-          to: hrefGPG,
-        },
-      ],
+      label: "Telegram",
+      icon: "i-simple-icons-telegram",
+      to: hrefTelegram,
     },
     {
-      items: [
-        {
-          label: "LinkedIn",
-          icon: "i-simple-icons-linkedin",
-          to: hrefLinkedIn,
-        },
-        {
-          label: "Upwork",
-          icon: "i-simple-icons-upwork",
-          to: hrefUpwork,
-        },
-      ],
+      label: "Email",
+      icon: "i-heroicons-envelope",
+      to: hrefMail,
     },
     {
-      items: [
-        {
-          label: "GitHub",
-          icon: "i-simple-icons-github",
-          to: hrefGithub,
-        },
-        {
-          label: "Huggingface",
-          icon: "i-noto-v1-hugging-face",
-          to: hrefHuggingFace,
-        },
-        {
-          label: "Patreon",
-          icon: "i-simple-icons-patreon",
-          to: hrefPatreon,
-        },
-      ],
+      label: "GPG",
+      icon: "i-heroicons-lock-closed",
+      to: hrefGPG,
+    },
+  ],
+  [
+    {
+      label: "LinkedIn",
+      icon: "i-simple-icons-linkedin",
+      to: hrefLinkedIn,
     },
     {
-      items: [
-        {
-          icon: "i-simple-icons-x",
-          to: hrefTwitter,
-        },
-        {
-          icon: "i-simple-icons-youtube",
-          to: hrefYoutube,
-        },
-        {
-          icon: "i-simple-icons-discord",
-          to: hrefDiscord,
-        },
-        {
-          icon: "i-simple-icons-instagram",
-          to: hrefInstagram,
-        },
-        {
-          icon: "i-simple-icons-threads",
-          to: hrefThreads,
-        },
-        {
-          label: $t("lastwill"),
-          icon: "i-heroicons-light-bulb",
-          to: hrefLastWill,
-        },
-      ],
+      label: "Upwork",
+      icon: "i-simple-icons-upwork",
+      to: hrefUpwork,
+    },
+  ],
+  [
+    {
+      label: "GitHub",
+      icon: "i-simple-icons-github",
+      to: hrefGithub,
     },
     {
-      icon: 'i-heroicons-wallet',
-      title: $t("donation"),
-      items: [
-        {
-          icon: "i-simple-icons-wise",
-          to: hrefWiseTag,
-        },
-        {
-          icon: "i-simple-icons-github",
-          to: hrefGithubSponsors,
-        },
-        {
-          icon: "i-simple-icons-patreon",
-          to: hrefPatreonMembership,
-        },
-        {
-          icon: "i-simple-icons-bitcoin",
-          to: hrefBitcoin,
-        },
-        {
-          icon: "i-simple-icons-ethereum",
-          to: hrefEthereum,
-        },
-      ],
+      label: "Huggingface",
+      icon: "i-noto-v1-hugging-face",
+      to: hrefHuggingFace,
     },
-  ];
+    {
+      label: "Patreon",
+      icon: "i-simple-icons-patreon",
+      to: hrefPatreon,
+    },
+  ],
+  [
+    {
+      icon: "i-simple-icons-x",
+      to: hrefTwitter,
+    },
+    {
+      icon: "i-simple-icons-youtube",
+      to: hrefYoutube,
+    },
+    {
+      icon: "i-simple-icons-discord",
+      to: hrefDiscord,
+    },
+    {
+      icon: "i-simple-icons-instagram",
+      to: hrefInstagram,
+    },
+    {
+      icon: "i-simple-icons-threads",
+      to: hrefThreads,
+    },
+    {
+      label: $t("lastwill"),
+      icon: "i-heroicons-light-bulb",
+      to: hrefLastWill,
+    },
+  ]
+];
+
+
+const linksDonations: Link[] = [
+  {
+    icon: "i-simple-icons-wise",
+    to: hrefWiseTag,
+  },
+  {
+    icon: "i-simple-icons-github",
+    to: hrefGithubSponsors,
+  },
+  {
+    icon: "i-simple-icons-patreon",
+    to: hrefPatreonMembership,
+  },
+  {
+    icon: "i-simple-icons-bitcoin",
+    to: hrefBitcoin,
+  },
+  {
+    icon: "i-simple-icons-ethereum",
+    to: hrefEthereum,
+  },
+]
 
 const localTimeUpdater = useInterval(1000);
 const localTime = ref("");
@@ -216,7 +204,7 @@ const onParticlesLoad = (container: Container) => {
       <NuxtParticles id="tsparticles" :options="optionsParticles" @load="onParticlesLoad"></NuxtParticles>
     </div>
 
-    <div class="absolute top-0 left-0 bottom-12 right-0 flex flex-col items-center justify-center">
+    <div class="absolute top-0 left-0 bottom-10 right-0 flex flex-col items-center justify-center">
       <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
 
       <div class="mt-8 flex flex-row justify-center items-baseline">
@@ -236,23 +224,24 @@ const onParticlesLoad = (container: Container) => {
         </div>
       </div>
 
-      <template v-for="(itemGroup, idx) in links" v-bind:key="idx">
-        <UCard v-if="itemGroup.title" class="w-80 mt-4"
-          :ui="{ background: 'bg-white dark:bg-gray-900', divide: 'divide-y divide-orange-200 dark:divide-orange-600', ring: 'ring-1 ring-orange-200 dark:ring-orange-600', header: { padding: 'p-1 sm:p-2', base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400' }, body: { padding: 'p-1 sm:p-2' } }">
-          <template #header>
-            <UIcon :name="itemGroup.icon!" class="me-1"></UIcon>
-            <span>{{ itemGroup.title }}</span>
-          </template>
-          <div class="flex flex-row justify-center items-center">
-            <UButton color="orange" v-for="(item, idx) in itemGroup.items" v-bind:key="idx" variant="ghost"
-              :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
-          </div>
-        </UCard>
-        <div v-else class="mb-4 flex flex-row justify-center items-center">
-          <UButton v-for="(item, idx) in itemGroup.items" v-bind:key="idx" variant="ghost" :label="item.label"
+      <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
+        <div class="mb-4 flex flex-row justify-center items-center">
+          <UButton v-for="(item, idx) in group" v-bind:key="idx + '.' + groupIdx" variant="ghost" :label="item.label"
             :icon="item.icon" :to="item.to" target="_blank"></UButton>
         </div>
       </template>
+
+      <UCard class="w-80 mt-8"
+        :ui="{ background: 'bg-white dark:bg-gray-900', divide: 'divide-y divide-orange-200 dark:divide-orange-600', ring: 'ring-1 ring-orange-200 dark:ring-orange-600', header: { padding: 'p-1 sm:p-2', base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400' }, body: { padding: 'p-1 sm:p-2' } }">
+        <template #header>
+          <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
+          <span>{{ $t('donation') }}</span>
+        </template>
+        <div class="flex flex-row justify-center items-center">
+          <UButton color="orange" v-for="(item, idx) in linksDonations" v-bind:key="idx" variant="ghost"
+            :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
+        </div>
+      </UCard>
     </div>
 
     <Footer class="absolute bottom-0 left-0 right-0"></Footer>

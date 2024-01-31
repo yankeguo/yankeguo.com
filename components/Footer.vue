@@ -20,7 +20,7 @@ function setLanguage(lang: string) {
 </script>
 
 <template>
-  <div>
+  <div class="pb-8">
     <div class="mb-2 flex flex-row justify-center items-center">
       <ClientOnly>
         <!-- i18n -->
@@ -43,10 +43,8 @@ function setLanguage(lang: string) {
       </ClientOnly>
     </div>
 
-    <div
-      class="flex flex-col justify-center items-center lg:flex-row lg:justify-center lg:items-center text-slate-400 text-sm pb-8">
-      <div class="mt-2 md:me-1">copyright &copy; {{ year }}</div>
-      <div class="mt-2 md:me-1">{{ $t("copyright") }}</div>
+    <div class="flex flex-row justify-center items-center text-slate-400 text-sm mt-3">
+      Copyright &copy; {{ year }} {{ $t("copyright") }}
     </div>
   </div>
 </template>
