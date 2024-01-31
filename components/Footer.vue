@@ -20,7 +20,7 @@ function setLanguage(lang: string) {
 </script>
 
 <template>
-  <div class="pb-8">
+  <div>
     <div class="mb-2 flex flex-row justify-center items-center">
       <ClientOnly>
         <!-- i18n -->

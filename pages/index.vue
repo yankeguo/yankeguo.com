@@ -204,7 +204,7 @@ const onParticlesLoad = (container: Container) => {
       <NuxtParticles id="tsparticles" :options="optionsParticles" @load="onParticlesLoad"></NuxtParticles>
     </div>
 
-    <div class="absolute top-0 left-0 bottom-10 right-0 flex flex-col items-center justify-center">
+    <div class="absolute top-0 left-0 bottom-12 right-0 flex flex-col items-center justify-center">
       <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
 
       <div class="mt-8 flex flex-row justify-center items-baseline">
@@ -233,7 +233,7 @@ const onParticlesLoad = (container: Container) => {
         </div>
       </template>
 
-      <UCard class="w-80 mt-8"
+      <UCard class="w-80 max-w-full mt-8"
         :ui="{ background: 'bg-white dark:bg-gray-900', divide: 'divide-y divide-orange-200 dark:divide-orange-600', ring: 'ring-1 ring-orange-200 dark:ring-orange-600', header: { padding: 'p-1 sm:p-2', base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400' }, body: { padding: 'p-1 sm:p-2' } }">
         <template #header>
           <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
@@ -244,9 +244,10 @@ const onParticlesLoad = (container: Container) => {
             :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
         </div>
       </UCard>
+
+      <Footer class="mt-12"></Footer>
     </div>
 
-    <Footer class="absolute bottom-0 left-0 right-0"></Footer>
   </Body>
 
   </Html>
