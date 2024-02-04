@@ -4,16 +4,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/ui",
     "nuxt-particles",
-    'nuxt-bugsnag',
   ],
-  bugsnag: {
-    publishRelease: true,
-    disableLog: true,
-    baseUrl: 'https://yankeguo.com',
-    config: {
-      apiKey: '1f733b5920aae544351070dcdd471dfa'
-    }
-  },
   app: {
     head: {
       link: [
