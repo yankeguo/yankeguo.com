@@ -20,6 +20,7 @@
     "@iconify-json/simple-icons": "^1.1.90",
     "@nuxt/ui": "^2.13.0",
     "@tailwindcss/typography": "^0.5.10",
+    "nuxt-bugsnag": "^7.2.3",
     "nuxt-particles": "^0.1.5"
   }
 }
