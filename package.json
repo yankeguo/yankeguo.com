@@ -10,16 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.10.3",
+    "nuxt": "^3.11.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "dependencies": {
     "@iconify-json/bi": "^1.1.23",
     "@iconify-json/noto-v1": "^1.1.11",
-    "@iconify-json/simple-icons": "^1.1.94",
-    "@nuxt/ui": "^2.14.1",
-    "@tailwindcss/typography": "^0.5.10",
-    "nuxt-particles": "^0.1.5"
+    "@iconify-json/simple-icons": "^1.1.97",
+    "@nuxt/ui": "^2.15.0",
+    "@tailwindcss/typography": "^0.5.11",
+    "nuxt-particles": "^0.3.0"
   }
 }
