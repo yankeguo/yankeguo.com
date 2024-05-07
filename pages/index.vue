@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useInterval } from "@vueuse/core";
 import { hrefWiseTag } from "~/composables/links";
-import type { Container } from "tsparticles-engine";
 
 const { $t } = useNuxtApp();
 
@@ -123,71 +122,6 @@ function updateLocalTime() {
 }
 
 watch(localTimeUpdater, updateLocalTime, { immediate: true });
-
-const optionsParticles: any = computed(() => {
-
-  const colorMode = useColorMode()
-
-  const isDark = colorMode.value === 'dark'
-
-  return {
-    particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: isDark ? "#ffffff" : '#333333' },
-      shape: {
-        type: "circle",
-        stroke: { width: 0, color: isDark ? "#333333" : '#ffffff' },
-        polygon: { nb_sides: 5 },
-      },
-      opacity: {
-        value: 0.5,
-        random: false,
-        anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
-      },
-      size: {
-        value: 4,
-        random: true,
-        anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: isDark ? "#ffffff" : '#333333',
-        opacity: 0.4,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: "none",
-        random: false,
-        straight: false,
-        out_mode: "out",
-        bounce: false,
-        attract: { enable: false, rotateX: 600, rotateY: 1200 }
-      }
-    },
-    interactivity: {
-      detect_on: "window",
-      events: {
-        onhover: { enable: true, mode: "grab" },
-        onclick: { enable: true, mode: "push" },
-        resize: true
-      },
-      modes: {
-        grab: { distance: 200, line_linked: { opacity: 1 } },
-        bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-        repulse: { distance: 200, duration: 0.4 },
-        push: { particles_nb: 4 },
-        remove: { particles_nb: 2 }
-      }
-    },
-    retina_detect: true
-  }
-})
-
-const onParticlesLoad = (container: Container) => {
-};
 </script>
 
 <template>
@@ -199,55 +133,51 @@ const onParticlesLoad = (container: Container) => {
 
 
   <Body>
+    <div class="h-screen flex flex-col items-center justify-center">
+      <div class="flex flex-col items-center justify-center">
+        <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
 
-    <div>
-      <NuxtParticles id="tsparticles" :options="optionsParticles" @load="onParticlesLoad"></NuxtParticles>
-    </div>
-
-    <div class="mt-16 flex flex-col items-center justify-center">
-      <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
-
-      <div class="mt-12 flex flex-row justify-center items-baseline">
-        <span class="font-bold text-3xl">Yanke Guo</span>
-        <span class="ms-2 text-sm text-slate-600 dark:text-slate-400">({{ $t("pronouns") }})</span>
-      </div>
-
-      <div class="mt-4 mb-12 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400">
-        <div class="flex flex-row items-center">
-          <UIcon name="i-heroicons-map-pin"></UIcon>
-          <span class="ms-1">{{ $t("location") }}</span>
+        <div class="mt-12 flex flex-row justify-center items-baseline">
+          <span class="font-bold text-3xl">Yanke Guo</span>
+          <span class="ms-2 text-sm text-slate-600 dark:text-slate-400">({{ $t("pronouns") }})</span>
         </div>
 
-        <div class="flex flex-row items-center ms-4">
-          <UIcon name="i-heroicons-clock"></UIcon>
-          <ClientOnly>
-            <span class="ms-1">{{ localTime }}</span>
-          </ClientOnly>
-        </div>
-      </div>
+        <div class="mt-4 mb-10 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400">
+          <div class="flex flex-row items-center">
+            <UIcon name="i-heroicons-map-pin"></UIcon>
+            <span class="ms-1">{{ $t("location") }}</span>
+          </div>
 
-      <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
-        <div class="mb-4 flex flex-row justify-center items-center">
-          <UButton v-for="(item, idx) in group" v-bind:key="idx + '.' + groupIdx" variant="ghost" :label="item.label"
-            :icon="item.icon" :to="item.to" target="_blank"></UButton>
+          <div class="flex flex-row items-center ms-4">
+            <UIcon name="i-heroicons-clock"></UIcon>
+            <ClientOnly>
+              <span class="ms-1">{{ localTime }}</span>
+            </ClientOnly>
+          </div>
         </div>
-      </template>
 
-      <UCard class="w-80 max-w-full mt-8"
-        :ui="{ background: 'bg-white dark:bg-gray-900', divide: 'divide-y divide-orange-200 dark:divide-orange-600', ring: 'ring-1 ring-orange-200 dark:ring-orange-600', header: { padding: 'p-1 sm:p-2', base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400' }, body: { padding: 'p-1 sm:p-2' } }">
-        <template #header>
-          <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
-          <span>{{ $t('donation') }}</span>
+        <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
+          <div class="mb-4 flex flex-row justify-center items-center">
+            <UButton v-for="(item, idx) in group" v-bind:key="idx + '.' + groupIdx" variant="ghost" :label="item.label"
+              :icon="item.icon" :to="item.to" target="_blank"></UButton>
+          </div>
         </template>
-        <div class="flex flex-row justify-center items-center">
-          <UButton color="orange" v-for="(item, idx) in linksDonations" v-bind:key="idx" variant="ghost"
-            :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
-        </div>
-      </UCard>
 
-      <Footer class="mt-12 mb-16"></Footer>
+        <UCard class="w-80 max-w-full mt-6"
+          :ui="{ background: 'bg-white dark:bg-gray-900', divide: 'divide-y divide-orange-200 dark:divide-orange-600', ring: 'ring-1 ring-orange-200 dark:ring-orange-600', header: { padding: 'p-1 sm:p-2', base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400' }, body: { padding: 'p-1 sm:p-2' } }">
+          <template #header>
+            <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
+            <span class="text-sm">{{ $t('donation') }}</span>
+          </template>
+          <div class="flex flex-row justify-center items-center">
+            <UButton color="orange" v-for="(item, idx) in linksDonations" v-bind:key="idx" size="sm" variant="ghost"
+              :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
+          </div>
+        </UCard>
+
+        <Footer class="mt-10"></Footer>
+      </div>
     </div>
-
   </Body>
 
   </Html>
