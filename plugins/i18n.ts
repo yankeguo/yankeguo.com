@@ -6,7 +6,7 @@ const en = {
   lastwill: "Alive?",
   pronouns: "him",
   donation: "donation",
-  copyright: "All Rights Reserved",
+  copyright: "all rights reserved",
   location: "Shenzhen, China",
 };
 
