@@ -87,27 +87,35 @@ const linksSocial: Link[][] = [
 ];
 
 
-const linksDonations: Link[] = [
-  {
-    icon: "i-simple-icons-wise",
-    to: hrefWiseTag,
-  },
-  {
-    icon: "i-simple-icons-github",
-    to: hrefGithubSponsors,
-  },
-  {
-    icon: "i-simple-icons-patreon",
-    to: hrefPatreonMembership,
-  },
-  {
-    icon: "i-simple-icons-bitcoin",
-    to: hrefBitcoin,
-  },
-  {
-    icon: "i-simple-icons-ethereum",
-    to: hrefEthereum,
-  },
+const linksDonations: Link[][] = [
+  [
+    {
+      icon: "i-simple-icons-wise",
+      to: hrefWiseTag,
+    },
+    {
+      icon: "i-simple-icons-github",
+      to: hrefGithubSponsors,
+    },
+    {
+      icon: "i-simple-icons-patreon",
+      to: hrefPatreonMembership,
+    },
+    {
+      icon: 'i-simple-icons-buymeacoffee',
+      to: hrefBuymeacoffee,
+    },
+  ],
+  [
+    {
+      icon: "i-simple-icons-bitcoin",
+      to: hrefBitcoin,
+    },
+    {
+      icon: "i-simple-icons-ethereum",
+      to: hrefEthereum,
+    },
+  ]
 ]
 
 const localTimeUpdater = useInterval(1000);
@@ -170,8 +178,11 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
             <span class="text-sm">{{ $t('donation') }}</span>
           </template>
           <div class="flex flex-row justify-center items-center">
-            <UButton color="orange" v-for="(item, idx) in linksDonations" v-bind:key="idx" size="sm" variant="ghost"
-              :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
+            <template v-for="(itemGroup, idxGroup) in linksDonations">
+              <UIcon v-if="idxGroup > 0" name="i-bi-dot"></UIcon>
+              <UButton color="orange" v-for="(item, idx) in itemGroup" v-bind:key="idx" size="sm" variant="ghost"
+                :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
+            </template>
           </div>
         </UCard>
 
