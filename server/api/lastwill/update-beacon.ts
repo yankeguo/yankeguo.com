@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
         },
         body: JSON.stringify({
             sha: sha,
-            message: 'update beacon',
+            message: 'ci: update beacon',
             content,
         })
     })
