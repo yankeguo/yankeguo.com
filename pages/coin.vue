@@ -19,8 +19,8 @@ onMounted(async () => {
   <div class="h-screen flex flex-col items-center justify-center">
     <div class="flex flex-col items-center justify-center">
       <div class="mt-10 flex flex-row justify-center items-center">
-        <img class="w-8 h-8" src="~/assets/coin-icon.svg" />
-        <h1 class="ms-3 font-bold text-2xl text-orange-600">
+        <img class="w-11 h-11" src="~/assets/coin-icon.svg" />
+        <h1 class="ms-5 font-bold text-4xl text-orange-600">
           {{ animatedName }}
         </h1>
       </div>
