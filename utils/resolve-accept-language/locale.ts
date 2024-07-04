@@ -1,13 +1,13 @@
-import type { NormalizeLocale } from './resolve-accept-language'
+import type { NormalizeLocale } from "./resolve-accept-language";
 
 /** Class to manage a locale identifier using the BCP 47 `language`-`country` format. */
 export default class Locale<TLocale extends string = string> {
   /** The ISO 3166-1 alpha-2 country code. */
-  public readonly countryCode: string
+  public readonly countryCode: string;
   /** The locale identifier using the BCP 47 `language`-`country` case-normalized format. */
-  public readonly identifier: NormalizeLocale<TLocale>
+  public readonly identifier: NormalizeLocale<TLocale>;
   /** The ISO 639-1 alpha-2 language code. */
-  public readonly languageCode: string
+  public readonly languageCode: string;
 
   /**
    * Create a new `Locale` object.
@@ -18,14 +18,15 @@ export default class Locale<TLocale extends string = string> {
    */
   constructor(identifier: string) {
     if (!Locale.isLocale(identifier, false)) {
-      throw new Error(`invalid locale identifier '${identifier}'`)
+      throw new Error(`invalid locale identifier '${identifier}'`);
     }
 
-    const [languageCode, countryCode] = identifier.split('-')
+    const [languageCode, countryCode] = identifier.split("-");
 
-    this.languageCode = languageCode.toLowerCase()
-    this.countryCode = countryCode.toUpperCase()
-    this.identifier = `${this.languageCode}-${this.countryCode}` as NormalizeLocale<TLocale>
+    this.languageCode = languageCode.toLowerCase();
+    this.countryCode = countryCode.toUpperCase();
+    this.identifier =
+      `${this.languageCode}-${this.countryCode}` as NormalizeLocale<TLocale>;
   }
 
   /**
@@ -34,9 +35,12 @@ export default class Locale<TLocale extends string = string> {
    * @param countryCode - An ISO 3166-1 alpha-2 country code.
    * @param caseNormalized - Should we verify if the identifier is using the case-normalized format?
    */
-  public static isCountryCode(countryCode: string, caseNormalized = true): boolean {
-    const regExp = new RegExp(/^[A-Z]{2}$/, caseNormalized ? undefined : 'i')
-    return regExp.test(countryCode)
+  public static isCountryCode(
+    countryCode: string,
+    caseNormalized = true,
+  ): boolean {
+    const regExp = new RegExp(/^[A-Z]{2}$/, caseNormalized ? undefined : "i");
+    return regExp.test(countryCode);
   }
 
   /**
@@ -45,9 +49,12 @@ export default class Locale<TLocale extends string = string> {
    * @param languageCode - An ISO 639-1 alpha-2 language code.
    * @param caseNormalized - Should we verify if the identifier is using the case-normalized format?
    */
-  public static isLanguageCode(languageCode: string, caseNormalized = true): boolean {
-    const regExp = new RegExp(/^[a-z]{2}$/, caseNormalized ? undefined : 'i')
-    return regExp.test(languageCode)
+  public static isLanguageCode(
+    languageCode: string,
+    caseNormalized = true,
+  ): boolean {
+    const regExp = new RegExp(/^[a-z]{2}$/, caseNormalized ? undefined : "i");
+    return regExp.test(languageCode);
   }
 
   /**
@@ -57,7 +64,10 @@ export default class Locale<TLocale extends string = string> {
    * @param caseNormalized - Should we verify if the identifier is using the case-normalized format?
    */
   public static isLocale(identifier: string, caseNormalized = true): boolean {
-    const regExp = new RegExp(/^[a-z]{2}-[A-Z]{2}$/, caseNormalized ? undefined : 'i')
-    return regExp.test(identifier)
+    const regExp = new RegExp(
+      /^[a-z]{2}-[A-Z]{2}$/,
+      caseNormalized ? undefined : "i",
+    );
+    return regExp.test(identifier);
   }
 }

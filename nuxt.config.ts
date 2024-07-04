@@ -1,9 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: [
-    "@nuxt/ui",
-  ],
+  modules: ["@nuxt/ui"],
   app: {
     head: {
       link: [
@@ -28,6 +26,6 @@ export default defineNuxtConfig({
     icons: ["simple-icons", "heroicons", "bi", "noto-v1"],
   },
   experimental: {
-    appManifest: false
-  }
+    appManifest: false,
+  },
 });

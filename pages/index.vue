@@ -83,9 +83,8 @@ const linksSocial: Link[][] = [
       icon: "i-heroicons-light-bulb",
       to: hrefLastWill,
     },
-  ]
+  ],
 ];
-
 
 const linksDonations: Link[][] = [
   [
@@ -102,7 +101,7 @@ const linksDonations: Link[][] = [
       to: hrefPatreonMembership,
     },
     {
-      icon: 'i-simple-icons-buymeacoffee',
+      icon: "i-simple-icons-buymeacoffee",
       to: hrefBuymeacoffee,
     },
   ],
@@ -115,8 +114,8 @@ const linksDonations: Link[][] = [
       icon: "i-simple-icons-ethereum",
       to: hrefEthereum,
     },
-  ]
-]
+  ],
+];
 
 const localTimeUpdater = useInterval(1000);
 const localTime = ref("");
@@ -134,62 +133,92 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
 
 <template>
   <Html :lang="$lang">
-
-  <Head>
-    <Title>Yanke Guo</Title>
-  </Head>
-
-
-  <Body>
-    <div class="h-screen flex flex-col items-center justify-center">
-      <div class="flex flex-col items-center justify-center">
-        <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
-
-        <div class="mt-10 flex flex-row justify-center items-baseline">
-          <span class="font-bold text-3xl">Yanke Guo</span>
-          <span class="ms-2 text-sm text-slate-600 dark:text-slate-400">({{ $t("pronouns") }})</span>
-        </div>
-
-        <div class="mt-4 mb-8 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400">
-          <div class="flex flex-row items-center">
-            <UIcon name="i-heroicons-map-pin"></UIcon>
-            <span class="ms-1">{{ $t("location") }}</span>
-          </div>
-
-          <div class="flex flex-row items-center ms-4">
-            <UIcon name="i-heroicons-clock"></UIcon>
-            <ClientOnly>
-              <span class="ms-1">{{ localTime }}</span>
-            </ClientOnly>
-          </div>
-        </div>
-
-        <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
-          <div class="mb-3 flex flex-row justify-center items-center">
-            <UButton v-for="(item, idx) in group" v-bind:key="idx + '.' + groupIdx" variant="ghost" :label="item.label"
-              :icon="item.icon" :to="item.to" target="_blank"></UButton>
-          </div>
-        </template>
-
-        <UCard class="w-80 max-w-full mt-4"
-          :ui="{ background: 'bg-white dark:bg-gray-900', divide: 'divide-y divide-orange-200 dark:divide-orange-600', ring: 'ring-1 ring-orange-200 dark:ring-orange-600', header: { padding: 'p-1 sm:p-2', base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400' }, body: { padding: 'p-1 sm:p-2' } }">
-          <template #header>
-            <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
-            <span class="text-sm">{{ $t('donation') }}</span>
-          </template>
-          <div class="flex flex-row justify-center items-center">
-            <template v-for="(itemGroup, idxGroup) in linksDonations">
-              <UIcon v-if="idxGroup > 0" name="i-bi-dot"></UIcon>
-              <UButton color="orange" v-for="(item, idx) in itemGroup" v-bind:key="idx" size="sm" variant="ghost"
-                :label="item.label" :icon="item.icon" :to="item.to" target="_blank"></UButton>
-            </template>
-          </div>
-        </UCard>
-
-        <Footer class="mt-10"></Footer>
-      </div>
-    </div>
-  </Body>
-
+    <Head>
+      <Title>Yanke Guo</Title>
+    </Head>
   </Html>
+
+  <div class="h-screen flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center">
+      <img
+        class="rounded-full w-32"
+        src="~/assets/avatar-cartoon.jpg"
+        alt="photo of me"
+      />
+
+      <div class="mt-10 flex flex-row justify-center items-baseline">
+        <span class="font-bold text-3xl">Yanke Guo</span>
+        <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
+          >({{ $t("pronouns") }})</span
+        >
+      </div>
+
+      <div
+        class="mt-4 mb-8 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+      >
+        <div class="flex flex-row items-center">
+          <UIcon name="i-heroicons-map-pin"></UIcon>
+          <span class="ms-1">{{ $t("location") }}</span>
+        </div>
+
+        <div class="flex flex-row items-center ms-4">
+          <UIcon name="i-heroicons-clock"></UIcon>
+          <ClientOnly>
+            <span class="ms-1">{{ localTime }}</span>
+          </ClientOnly>
+        </div>
+      </div>
+
+      <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
+        <div class="mb-3 flex flex-row justify-center items-center">
+          <UButton
+            v-for="(item, idx) in group"
+            v-bind:key="idx + '.' + groupIdx"
+            variant="ghost"
+            :label="item.label"
+            :icon="item.icon"
+            :to="item.to"
+            target="_blank"
+          ></UButton>
+        </div>
+      </template>
+
+      <UCard
+        class="w-80 max-w-full mt-4"
+        :ui="{
+          background: 'bg-white dark:bg-gray-900',
+          divide: 'divide-y divide-orange-200 dark:divide-orange-600',
+          ring: 'ring-1 ring-orange-200 dark:ring-orange-600',
+          header: {
+            padding: 'p-1 sm:p-2',
+            base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400',
+          },
+          body: { padding: 'p-1 sm:p-2' },
+        }"
+      >
+        <template #header>
+          <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
+          <span class="text-sm">{{ $t("donation") }}</span>
+        </template>
+        <div class="flex flex-row justify-center items-center">
+          <template v-for="(itemGroup, idxGroup) in linksDonations">
+            <UIcon v-if="idxGroup > 0" name="i-bi-dot"></UIcon>
+            <UButton
+              color="orange"
+              v-for="(item, idx) in itemGroup"
+              v-bind:key="idx"
+              size="sm"
+              variant="ghost"
+              :label="item.label"
+              :icon="item.icon"
+              :to="item.to"
+              target="_blank"
+            ></UButton>
+          </template>
+        </div>
+      </UCard>
+
+      <Footer class="mt-10"></Footer>
+    </div>
+  </div>
 </template>

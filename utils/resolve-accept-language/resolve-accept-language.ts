@@ -1,36 +1,44 @@
-import Locale from './locale'
-import LookupList from './lookup-list'
+import Locale from "./locale";
+import LookupList from "./lookup-list";
 
 /** The type matches. */
-export type MatchType = 'localeBased' | 'languageBased' | 'relatedLocaleBased' | 'defaultLocale'
+export type MatchType =
+  | "localeBased"
+  | "languageBased"
+  | "relatedLocaleBased"
+  | "defaultLocale";
 
 /** Match type enumeration. */
 export const MATCH_TYPES: {
-  readonly [K in MatchType]: K
+  readonly [K in MatchType]: K;
 } = {
-  localeBased: 'localeBased',
-  languageBased: 'languageBased',
-  relatedLocaleBased: 'relatedLocaleBased',
-  defaultLocale: 'defaultLocale',
-}
+  localeBased: "localeBased",
+  languageBased: "languageBased",
+  relatedLocaleBased: "relatedLocaleBased",
+  defaultLocale: "defaultLocale",
+};
 
 /** Type to normalize the locale format. */
 export type NormalizeLocale<Remainder extends string> =
   Remainder extends `${infer LanguageCode}-${infer CountryCode}`
-  ? `${Lowercase<LanguageCode>}-${Uppercase<CountryCode>}`
-  : Remainder
+    ? `${Lowercase<LanguageCode>}-${Uppercase<CountryCode>}`
+    : Remainder;
 
 /** Resolve the preferred locale from an HTTP `Accept-Language` header. */
-export class ResolveAcceptLanguage<TLocales extends readonly string[] = string[]> {
+export class ResolveAcceptLanguage<
+  TLocales extends readonly string[] = string[],
+> {
   /** The default locale. */
-  private defaultLocale: NormalizeLocale<TLocales[number]>
+  private defaultLocale: NormalizeLocale<TLocales[number]>;
 
   /** The locale-based match, if applicable. */
-  private localeBasedMatch: NormalizeLocale<TLocales[number]> | undefined
+  private localeBasedMatch: NormalizeLocale<TLocales[number]> | undefined;
   /** The language-based match, if applicable. */
-  private languageBasedMatch: NormalizeLocale<TLocales[number]> | undefined
+  private languageBasedMatch: NormalizeLocale<TLocales[number]> | undefined;
   /** The related-locale-based match, if applicable. */
-  private relatedLocaleBasedMatch: NormalizeLocale<TLocales[number]> | undefined
+  private relatedLocaleBasedMatch:
+    | NormalizeLocale<TLocales[number]>
+    | undefined;
 
   /**
    * Create a new `ResolveAcceptLanguage` object.
@@ -44,44 +52,53 @@ export class ResolveAcceptLanguage<TLocales extends readonly string[] = string[]
   constructor(
     acceptLanguageHeader: string,
     locales: TLocales extends string[] ? TLocales[number][] : TLocales,
-    defaultLocale: TLocales[number]
+    defaultLocale: TLocales[number],
   ) {
     // Check if the locales are valid.
     locales.forEach((locale) => {
       if (!Locale.isLocale(locale, false)) {
-        throw new Error(`invalid locale identifier '${locale}'`)
+        throw new Error(`invalid locale identifier '${locale}'`);
       }
-    })
+    });
 
     // Check if the default locale is valid.
     if (!Locale.isLocale(defaultLocale, false)) {
-      throw new Error(`invalid default locale identifier '${defaultLocale}'`)
+      throw new Error(`invalid default locale identifier '${defaultLocale}'`);
     }
 
     // Check if the default locale is included in the locales.
-    if (!locales.some((locale) => locale.toLowerCase() === defaultLocale.toLowerCase())) {
-      throw new Error('the default locale must be included in the locales')
+    if (
+      !locales.some(
+        (locale) => locale.toLowerCase() === defaultLocale.toLowerCase(),
+      )
+    ) {
+      throw new Error("the default locale must be included in the locales");
     }
 
-    this.defaultLocale = new Locale(defaultLocale).identifier as NormalizeLocale<TLocales[number]>
-    const lookupList = new LookupList(acceptLanguageHeader, locales, defaultLocale)
+    this.defaultLocale = new Locale(defaultLocale)
+      .identifier as NormalizeLocale<TLocales[number]>;
+    const lookupList = new LookupList(
+      acceptLanguageHeader,
+      locales,
+      defaultLocale,
+    );
 
     // Check if the match if locale based.
-    this.localeBasedMatch = lookupList.getLocaleBasedMatch()
+    this.localeBasedMatch = lookupList.getLocaleBasedMatch();
     if (this.localeBasedMatch) {
-      return
+      return;
     }
 
     // Check if the match is language based.
-    this.languageBasedMatch = lookupList.getLanguageBasedMatch()
+    this.languageBasedMatch = lookupList.getLanguageBasedMatch();
     if (this.languageBasedMatch) {
-      return
+      return;
     }
 
     // Check if the match is related-locale based.
-    this.relatedLocaleBasedMatch = lookupList.getRelatedLocaleBasedMatch()
+    this.relatedLocaleBasedMatch = lookupList.getRelatedLocaleBasedMatch();
     if (this.relatedLocaleBasedMatch) {
-      return
+      return;
     }
   }
 
@@ -97,7 +114,7 @@ export class ResolveAcceptLanguage<TLocales extends readonly string[] = string[]
         ? MATCH_TYPES.languageBased
         : this.relatedLocaleBasedMatch
           ? MATCH_TYPES.relatedLocaleBased
-          : MATCH_TYPES.defaultLocale
+          : MATCH_TYPES.defaultLocale;
   }
 
   /**
@@ -111,7 +128,7 @@ export class ResolveAcceptLanguage<TLocales extends readonly string[] = string[]
       this.languageBasedMatch ??
       this.relatedLocaleBasedMatch ??
       this.defaultLocale
-    )
+    );
   }
 }
 
@@ -138,7 +155,11 @@ export class ResolveAcceptLanguage<TLocales extends readonly string[] = string[]
 export const resolveAcceptLanguage = <TLocales extends readonly string[]>(
   acceptLanguageHeader: string,
   locales: TLocales extends string[] ? TLocales[number][] : TLocales,
-  defaultLocale: TLocales[number]
+  defaultLocale: TLocales[number],
 ): NormalizeLocale<TLocales[number]> => {
-  return new ResolveAcceptLanguage(acceptLanguageHeader, locales, defaultLocale).getMatch()
-}
+  return new ResolveAcceptLanguage(
+    acceptLanguageHeader,
+    locales,
+    defaultLocale,
+  ).getMatch();
+};

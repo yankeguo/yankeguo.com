@@ -9,7 +9,7 @@ const isDark = computed({
   },
   set() {
     colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
-    location.reload()
+    location.reload();
   },
 });
 
@@ -25,17 +25,30 @@ function setLanguage(lang: string) {
       <ClientOnly>
         <!-- i18n -->
         <template v-for="(item, idx) in $langs">
-          <a @click.prevent="setLanguage(item)" :class="{
-            'text-sm': true,
-            underline: $lang === item,
-          }" href="#">
+          <a
+            @click.prevent="setLanguage(item)"
+            :class="{
+              'text-sm': true,
+              underline: $lang === item,
+            }"
+            href="#"
+          >
             <span>{{ $langNames[item] }}</span>
           </a>
           <i class="i-bi-dot text-slate-400" />
         </template>
 
-        <UButton :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'
-          " size="2xs" color="black" variant="ghost" aria-label="Theme" :padded="false" @click="isDark = !isDark" />
+        <UButton
+          :icon="
+            isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'
+          "
+          size="2xs"
+          color="black"
+          variant="ghost"
+          aria-label="Theme"
+          :padded="false"
+          @click="isDark = !isDark"
+        />
 
         <template #fallback>
           <div class="w-8 h-8" />
@@ -43,7 +56,9 @@ function setLanguage(lang: string) {
       </ClientOnly>
     </div>
 
-    <div class="flex flex-row justify-center items-center text-slate-400 text-sm mt-3">
+    <div
+      class="flex flex-row justify-center items-center text-slate-400 text-sm mt-3"
+    >
       copyright &copy; {{ year }} {{ $t("copyright") }}
     </div>
   </div>

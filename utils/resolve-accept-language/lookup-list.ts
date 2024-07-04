@@ -1,9 +1,9 @@
-import Locale from './locale'
-import LocaleList from './locale-list'
-import type { NormalizeLocale } from './resolve-accept-language'
+import Locale from "./locale";
+import LocaleList from "./locale-list";
+import type { NormalizeLocale } from "./resolve-accept-language";
 
 /** An object where the properties are quality (in string format) and their value a set of strings. */
-type DataObject = Record<string, Set<string>>
+type DataObject = Record<string, Set<string>>;
 
 /**
  * An object representing an HTTP `Accept-Language` header directive.
@@ -13,25 +13,25 @@ type DataObject = Record<string, Set<string>>
  * @param quality - The quality factor (default is 1; values can range from 0 to 1 with up to 3 decimals)
  */
 type Directive = {
-  languageCode: string
-  locale?: string
-  quality: string
-}
+  languageCode: string;
+  locale?: string;
+  quality: string;
+};
 
 /** Lookup list used to match the preferred locale based on the value of an `Accept-Language` HTTP header. */
 export default class LookupList<TLocales extends readonly string[]> {
   /** The list of locales used to get the match during the lookup. */
-  private localeList: LocaleList<TLocales>
+  private localeList: LocaleList<TLocales>;
   /**
    * Data object where the properties are quality (in string format) and their values a set containing locale
    * identifiers using the `language`-`country` format and ISO 639-1 alpha-2 language code.
    */
-  private localesAndLanguagesByQuality: DataObject = {}
+  private localesAndLanguagesByQuality: DataObject = {};
   /**
    * Data object where the properties are quality (in string format) and their value a set of ISO 639-1 alpha-2
    * language code.
    */
-  private relatedLocaleLanguagesByQuality: DataObject = {}
+  private relatedLocaleLanguagesByQuality: DataObject = {};
 
   /**
    * Create a new `LookupList` object.
@@ -43,72 +43,77 @@ export default class LookupList<TLocales extends readonly string[]> {
   constructor(
     acceptLanguageHeader: string,
     locales: TLocales extends string[] ? TLocales[number][] : TLocales,
-    defaultLocale: TLocales[number]
+    defaultLocale: TLocales[number],
   ) {
     // Put the default locale first so that it will be more likely to be matched.
     this.localeList = new LocaleList([
       defaultLocale,
       ...locales.filter((locale) => locale !== defaultLocale),
-    ])
+    ]);
 
     const directives = acceptLanguageHeader
-      .split(',')
+      .split(",")
       .map((directiveString) => this.getDirective(directiveString.trim()))
-      .filter((directive) => directive !== undefined) as Directive[]
+      .filter((directive) => directive !== undefined) as Directive[];
 
     // Check if 'es-419' exists in the directives
-    const es419DirectiveIndex = directives.findIndex((directive) => directive.locale === 'es-419')
+    const es419DirectiveIndex = directives.findIndex(
+      (directive) => directive.locale === "es-419",
+    );
 
     if (es419DirectiveIndex >= 0) {
       // Remove 'es-419' from the directive.
-      const es419Directive = directives[es419DirectiveIndex]
-      directives.splice(es419DirectiveIndex, 1)
+      const es419Directive = directives[es419DirectiveIndex];
+      directives.splice(es419DirectiveIndex, 1);
 
       // Replace `es-419` by the common Latin American spanish variants supported by browsers.
       const latinAmericanLocales = [
-        'es-AR', // Spanish Argentina
-        'es-CL', // Spanish Chile
-        'es-CO', // Spanish Colombia
-        'es-CR', // Spanish Costa Rica
-        'es-HN', // Spanish Honduras
-        'es-MX', // Spanish Mexico
-        'es-PE', // Spanish Peru
-        'es-US', // Spanish United States
-        'es-UY', // Spanish Uruguay
-        'es-VE', // Spanish Venezuela
-      ]
+        "es-AR", // Spanish Argentina
+        "es-CL", // Spanish Chile
+        "es-CO", // Spanish Colombia
+        "es-CR", // Spanish Costa Rica
+        "es-HN", // Spanish Honduras
+        "es-MX", // Spanish Mexico
+        "es-PE", // Spanish Peru
+        "es-US", // Spanish United States
+        "es-UY", // Spanish Uruguay
+        "es-VE", // Spanish Venezuela
+      ];
 
       latinAmericanLocales.forEach((locale) => {
         directives.push({
-          languageCode: 'es',
+          languageCode: "es",
           locale: locale,
           quality: es419Directive.quality,
-        })
-      })
+        });
+      });
     }
 
     for (const directive of directives) {
-      const { locale, languageCode, quality } = directive
+      const { locale, languageCode, quality } = directive;
 
       // If the language is not supported, skip to the next match.
       if (!this.localeList.languages.has(languageCode)) {
-        continue
+        continue;
       }
 
       // If there is no country code (while the language is supported), add the language preference.
       if (!locale) {
-        this.addLanguage(quality, languageCode)
-        continue
+        this.addLanguage(quality, languageCode);
+        continue;
       }
 
       // If the locale is not supported, but the locale's language is, add to locale language preference.
-      if (!this.localeList.locales.has(locale) && this.localeList.languages.has(languageCode)) {
-        this.addRelatedLocaleLanguage(quality, languageCode)
-        continue
+      if (
+        !this.localeList.locales.has(locale) &&
+        this.localeList.languages.has(languageCode)
+      ) {
+        this.addRelatedLocaleLanguage(quality, languageCode);
+        continue;
       }
 
       // If the locale is supported, add the locale preference.
-      this.addLocale(quality, locale)
+      this.addLocale(quality, locale);
     }
   }
 
@@ -118,10 +123,10 @@ export default class LookupList<TLocales extends readonly string[]> {
    * @returns The top locale-based match or undefined when there is no match.
    */
   public getLocaleBasedMatch(): NormalizeLocale<TLocales[number]> | undefined {
-    const match = this.getMatch(this.localesAndLanguagesByQuality)
+    const match = this.getMatch(this.localesAndLanguagesByQuality);
     return match && Locale.isLocale(match)
       ? (match as NormalizeLocale<TLocales[number]>)
-      : undefined
+      : undefined;
   }
 
   /**
@@ -129,12 +134,17 @@ export default class LookupList<TLocales extends readonly string[]> {
    *
    * @returns The language-based match or undefined when there is no match.
    */
-  public getLanguageBasedMatch(): NormalizeLocale<TLocales[number]> | undefined {
-    const match = this.getMatch(this.localesAndLanguagesByQuality)
+  public getLanguageBasedMatch():
+    | NormalizeLocale<TLocales[number]>
+    | undefined {
+    const match = this.getMatch(this.localesAndLanguagesByQuality);
     return match && !Locale.isLocale(match)
-      ? ((this.localeList.objects.find((locale) => locale.languageCode === match) as Locale)
-        .identifier as NormalizeLocale<TLocales[number]>)
-      : undefined
+      ? ((
+          this.localeList.objects.find(
+            (locale) => locale.languageCode === match,
+          ) as Locale
+        ).identifier as NormalizeLocale<TLocales[number]>)
+      : undefined;
   }
 
   /**
@@ -142,12 +152,17 @@ export default class LookupList<TLocales extends readonly string[]> {
    *
    * @returns The related-locale-based match or undefined when there is no match.
    */
-  public getRelatedLocaleBasedMatch(): NormalizeLocale<TLocales[number]> | undefined {
-    const match = this.getMatch(this.relatedLocaleLanguagesByQuality)
+  public getRelatedLocaleBasedMatch():
+    | NormalizeLocale<TLocales[number]>
+    | undefined {
+    const match = this.getMatch(this.relatedLocaleLanguagesByQuality);
     return match
-      ? ((this.localeList.objects.find((locale) => locale.languageCode === match) as Locale)
-        .identifier as NormalizeLocale<TLocales[number]>)
-      : undefined
+      ? ((
+          this.localeList.objects.find(
+            (locale) => locale.languageCode === match,
+          ) as Locale
+        ).identifier as NormalizeLocale<TLocales[number]>)
+      : undefined;
   }
 
   /**
@@ -158,9 +173,9 @@ export default class LookupList<TLocales extends readonly string[]> {
    */
   private addLanguage(quality: string, languageCode: string): void {
     if (!this.localesAndLanguagesByQuality[quality]) {
-      this.localesAndLanguagesByQuality[quality] = new Set()
+      this.localesAndLanguagesByQuality[quality] = new Set();
     }
-    this.localesAndLanguagesByQuality[quality].add(languageCode)
+    this.localesAndLanguagesByQuality[quality].add(languageCode);
   }
 
   /**
@@ -171,9 +186,9 @@ export default class LookupList<TLocales extends readonly string[]> {
    */
   private addLocale(quality: string, identifier: string): void {
     if (!this.localesAndLanguagesByQuality[quality]) {
-      this.localesAndLanguagesByQuality[quality] = new Set()
+      this.localesAndLanguagesByQuality[quality] = new Set();
     }
-    this.localesAndLanguagesByQuality[quality].add(identifier)
+    this.localesAndLanguagesByQuality[quality].add(identifier);
   }
 
   /**
@@ -182,11 +197,14 @@ export default class LookupList<TLocales extends readonly string[]> {
    * @param quality - The HTTP header's quality factor associated with a related locale's language.
    * @param languageCode - An ISO 639-1 alpha-2 language code.
    */
-  private addRelatedLocaleLanguage(quality: string, languageCode: string): void {
+  private addRelatedLocaleLanguage(
+    quality: string,
+    languageCode: string,
+  ): void {
     if (!this.relatedLocaleLanguagesByQuality[quality]) {
-      this.relatedLocaleLanguagesByQuality[quality] = new Set()
+      this.relatedLocaleLanguagesByQuality[quality] = new Set();
     }
-    this.relatedLocaleLanguagesByQuality[quality].add(languageCode)
+    this.relatedLocaleLanguagesByQuality[quality].add(languageCode);
   }
 
   /**
@@ -207,28 +225,33 @@ export default class LookupList<TLocales extends readonly string[]> {
      * - We hardcode the support for the `419` UN M49 code (as country code) representing Latin America to support `es-419`.
      */
     const directiveMatch = directiveString.match(
-      /^((?<matchedLanguageCode>([a-z]{2}))(-(?<matchedCountryCode>[a-z]{2}|419))?)(;q=(?<matchedQuality>(1(\.0{0,3})?)|(0(\.\d{0,3})?)))?$/i
-    )
+      /^((?<matchedLanguageCode>([a-z]{2}))(-(?<matchedCountryCode>[a-z]{2}|419))?)(;q=(?<matchedQuality>(1(\.0{0,3})?)|(0(\.\d{0,3})?)))?$/i,
+    );
 
     if (!directiveMatch?.groups) {
-      return undefined // No regular expression match.
+      return undefined; // No regular expression match.
     }
 
-    const { matchedLanguageCode, matchedCountryCode, matchedQuality } = directiveMatch.groups
+    const { matchedLanguageCode, matchedCountryCode, matchedQuality } =
+      directiveMatch.groups;
 
-    const languageCode = matchedLanguageCode.toLowerCase()
-    const countryCode = matchedCountryCode ? matchedCountryCode.toUpperCase() : undefined
+    const languageCode = matchedLanguageCode.toLowerCase();
+    const countryCode = matchedCountryCode
+      ? matchedCountryCode.toUpperCase()
+      : undefined;
 
     // Only `es-419` is supported in browsers - if any other languages are using `419` we filter them out.
-    if (countryCode === '419' && languageCode !== 'es') {
-      return undefined
+    if (countryCode === "419" && languageCode !== "es") {
+      return undefined;
     }
 
     const quality =
-      matchedQuality === undefined ? '1' : Number.parseFloat(matchedQuality).toString() // Remove trailing zeros.
-    const locale = countryCode ? `${languageCode}-${countryCode}` : undefined
+      matchedQuality === undefined
+        ? "1"
+        : Number.parseFloat(matchedQuality).toString(); // Remove trailing zeros.
+    const locale = countryCode ? `${languageCode}-${countryCode}` : undefined;
 
-    return { languageCode, locale, quality }
+    return { languageCode, locale, quality };
   }
 
   /**
@@ -239,10 +262,11 @@ export default class LookupList<TLocales extends readonly string[]> {
    * @returns A match or undefined when there is no match.
    */
   private getMatch(dataObject: DataObject): string | undefined {
-    const dataObjectEntries = Object.entries(dataObject)
+    const dataObjectEntries = Object.entries(dataObject);
 
     return dataObjectEntries.length === 0
       ? undefined
-      : (dataObjectEntries.sort().reverse()[0][1].values().next().value as string)
+      : (dataObjectEntries.sort().reverse()[0][1].values().next()
+          .value as string);
   }
 }
