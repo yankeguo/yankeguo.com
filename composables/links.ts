@@ -12,8 +12,8 @@ export const hrefPatreon = `https://www.patreon.com/${username}`;
 export const hrefPatreonMembership = `https://www.patreon.com/${username}/membership`;
 export const hrefTelegram = `https://t.me/${username}`;
 
-export const addressBitcoin = "bc1qfjnfnxwgjdwuqyhvgw5f6fxa76axjrfa82plmr";
-export const addressEthereum = "0x41D4c3Eaf03fa202841e18002c29593cD24a97F6";
+export const addressBitcoin = "bc1qc3mk9xku6ft7pmxmfmejk46ca7a8shdqc8443s";
+export const addressEthereum = "0x6384b4700Ccb0F09Ef217135d42abFE5Cd98Cf0c";
 
 export const hrefBitcoin = `https://www.blockchain.com/btc/address/${addressBitcoin}`;
 export const hrefEthereum = `https://etherscan.io/address/${addressEthereum}`;
