@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui"],
+
   app: {
     head: {
       link: [
@@ -18,14 +19,19 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   runtimeConfig: {
     lastwillGitHubToken: process.env.LASTWILL_GITHUB_TOKEN,
     lastwillToken: process.env.LASTWILL_TOKEN,
   },
+
   ui: {
     icons: ["simple-icons", "heroicons", "bi", "noto-v1"],
   },
+
   experimental: {
     appManifest: false,
   },
+
+  compatibilityDate: "2024-07-10",
 });

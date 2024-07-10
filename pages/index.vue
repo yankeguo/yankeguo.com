@@ -183,6 +183,20 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         </div>
       </template>
 
+      <div class="flex flex-row items-center justify-center mt-2 mb-2">
+        <UBadge color="lime" variant="solid" class="font-semibold">NFT</UBadge>
+        <UButton
+          color="lime"
+          variant="link"
+          to="https://gnosis.blockscout.com/token/0xc9174F37f7C969e26d91C0A6001c424f1426c6bD"
+          :external="true"
+          target="_blank"
+        >
+          <img src="~/assets/token-icon.svg" class="w-5" />
+          <span class="font-semibold">Token of Gratitude by Yanke Guo</span>
+        </UButton>
+      </div>
+
       <UCard
         class="w-80 max-w-full mt-4"
         :ui="{

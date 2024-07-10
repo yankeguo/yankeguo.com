@@ -6,6 +6,7 @@ const en = {
   lastwill: "Alive?",
   pronouns: "him",
   donation: "donation",
+  nft: "NFT",
   copyright: "all rights reserved",
   location: "Shenzhen, China",
 };
@@ -15,6 +16,7 @@ const zh: typeof en = {
   pronouns: "他",
   location: "深圳，中国",
   donation: "赞助",
+  nft: "NFT",
   copyright: "保留所有权利",
 };
 
