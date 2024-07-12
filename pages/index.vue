@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useInterval } from "@vueuse/core";
-import { hrefWiseTag } from "~/composables/links";
+import { hrefAirdrop } from "~/composables/links";
 
 const { $t } = useNuxtApp();
 
@@ -188,7 +188,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         <UButton
           color="lime"
           variant="link"
-          to="https://gnosis.blockscout.com/token/0xc9174F37f7C969e26d91C0A6001c424f1426c6bD"
+          :to="hrefAirdrop"
           :external="true"
           target="_blank"
         >

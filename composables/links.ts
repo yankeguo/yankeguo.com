@@ -30,3 +30,5 @@ export const hrefInstagram = `https://www.instagram.com/${username}`;
 export const hrefThreads = `https://www.threads.net/@${username}`;
 
 export const hrefDiscord = "https://discordapp.com/users/1065517056755245086";
+
+export const hrefAirdrop = "https://airdrop.yankeguo.com";
