@@ -192,40 +192,24 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         </div>
       </template>
 
-      <UCard
-        class="w-80 max-w-full mt-4"
-        :ui="{
-          background: 'bg-white dark:bg-gray-900',
-          divide: 'divide-y divide-orange-200 dark:divide-orange-600',
-          ring: 'ring-1 ring-orange-200 dark:ring-orange-600',
-          header: {
-            padding: 'p-1 sm:p-2',
-            base: 'flex flex-row justify-center items-center text-orange-600 dark:text-orange-400',
-          },
-          body: { padding: 'p-1 sm:p-2' },
-        }"
-      >
-        <template #header>
-          <UIcon name="i-heroicons-wallet" class="me-1"></UIcon>
-          <span class="text-sm">{{ $t("donation") }}</span>
+      <div class="flex flex-row justify-center items-center my-1">
+        <UBadge class="me-2" variant="outline" color="orange">{{
+          $t("donation")
+        }}</UBadge>
+        <template v-for="(itemGroup, idxGroup) in linksDonations">
+          <UButton
+            color="orange"
+            v-for="(item, idx) in itemGroup"
+            v-bind:key="idx"
+            size="sm"
+            variant="ghost"
+            :label="item.label"
+            :icon="item.icon"
+            :to="item.to"
+            target="_blank"
+          ></UButton>
         </template>
-        <div class="flex flex-row justify-center items-center">
-          <template v-for="(itemGroup, idxGroup) in linksDonations">
-            <UIcon v-if="idxGroup > 0" name="i-bi-dot"></UIcon>
-            <UButton
-              color="orange"
-              v-for="(item, idx) in itemGroup"
-              v-bind:key="idx"
-              size="sm"
-              variant="ghost"
-              :label="item.label"
-              :icon="item.icon"
-              :to="item.to"
-              target="_blank"
-            ></UButton>
-          </template>
-        </div>
-      </UCard>
+      </div>
 
       <Footer class="mt-10"></Footer>
     </div>
