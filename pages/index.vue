@@ -60,14 +60,17 @@ const linksSocial: Link[][] = [
   [
     {
       icon: "i-simple-icons-x",
+      label: "X",
       to: hrefTwitter,
     },
     {
       icon: "i-simple-icons-youtube",
+      label: "Youtube",
       to: hrefYoutube,
     },
     {
       icon: "i-simple-icons-discord",
+      label: "Discord",
       to: hrefDiscord,
     },
     {
