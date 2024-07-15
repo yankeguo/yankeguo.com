@@ -71,10 +71,6 @@ const linksSocial: Link[][] = [
       to: hrefDiscord,
     },
     {
-      icon: "i-simple-icons-instagram",
-      to: hrefInstagram,
-    },
-    {
       label: $t("lastwill"),
       icon: "i-heroicons-light-bulb",
       to: hrefLastWill,
