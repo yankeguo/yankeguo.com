@@ -141,7 +141,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         alt="photo of me"
       />
 
-      <div class="mt-10 flex flex-row justify-center items-baseline">
+      <div class="mt-8 flex flex-row justify-center items-baseline">
         <span class="font-bold text-3xl">Yanke Guo</span>
         <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
           >({{ $t("pronouns") }})</span
@@ -149,7 +149,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
       </div>
 
       <div
-        class="mt-4 mb-8 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+        class="mt-4 mb-4 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
       >
         <div class="flex flex-row items-center">
           <UIcon name="i-heroicons-map-pin"></UIcon>
@@ -162,6 +162,20 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
             <span class="ms-1">{{ localTime }}</span>
           </ClientOnly>
         </div>
+      </div>
+
+      <div class="flex flex-row items-center justify-center mb-4">
+        <UBadge color="lime" variant="solid" class="font-semibold">NFT</UBadge>
+        <UButton
+          color="lime"
+          variant="link"
+          :to="hrefAirdrop"
+          :external="true"
+          target="_blank"
+        >
+          <img src="~/assets/token-icon.svg" class="w-5" />
+          <span class="font-semibold">Token of Gratitude by Yanke Guo</span>
+        </UButton>
       </div>
 
       <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
@@ -177,20 +191,6 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
           ></UButton>
         </div>
       </template>
-
-      <div class="flex flex-row items-center justify-center mt-2 mb-2">
-        <UBadge color="lime" variant="solid" class="font-semibold">NFT</UBadge>
-        <UButton
-          color="lime"
-          variant="link"
-          :to="hrefAirdrop"
-          :external="true"
-          target="_blank"
-        >
-          <img src="~/assets/token-icon.svg" class="w-5" />
-          <span class="font-semibold">Token of Gratitude by Yanke Guo</span>
-        </UButton>
-      </div>
 
       <UCard
         class="w-80 max-w-full mt-4"
