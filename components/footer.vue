@@ -59,7 +59,7 @@ function setLanguage(lang: string) {
     <div
       class="flex flex-row justify-center items-center text-slate-400 text-sm mt-3"
     >
-      copyright &copy; {{ year }} {{ $t("copyright") }}
+      Copyright &copy; {{ year }} {{ $t("copyright") }}
     </div>
   </div>
 </template>

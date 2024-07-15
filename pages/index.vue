@@ -211,7 +211,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         </template>
       </div>
 
-      <Footer class="mt-10"></Footer>
+      <Footer class="fixed bottom-4"></Footer>
     </div>
   </div>
 </template>

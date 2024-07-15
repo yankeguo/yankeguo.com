@@ -5,9 +5,9 @@ import { resolveAcceptLanguage } from "~/utils/resolve-accept-language/resolve-a
 const en = {
   lastwill: "Alive?",
   pronouns: "him",
-  donation: "donation",
+  donation: "Donation",
   nft: "NFT",
-  copyright: "all rights reserved",
+  copyright: "All Rights Reserved",
   location: "Shenzhen, China",
 };
 
