@@ -164,8 +164,8 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         </div>
       </div>
 
-      <div class="flex flex-row items-center justify-center mb-4">
-        <UBadge color="lime" variant="solid" class="font-semibold">NFT</UBadge>
+      <div class="flex flex-row items-center justify-center mb-3">
+        <UBadge color="lime" variant="outline">NFT</UBadge>
         <UButton
           color="lime"
           variant="link"
@@ -174,7 +174,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
           target="_blank"
         >
           <img src="~/assets/token-icon.svg" class="w-5" />
-          <span class="font-semibold">Token of Gratitude by Yanke Guo</span>
+          <span>Token of Gratitude by Yanke Guo</span>
         </UButton>
       </div>
 
