@@ -133,7 +133,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
     </Head>
   </Html>
 
-  <div class="h-screen flex flex-col items-center justify-center">
+  <div class="m-0 h-screen flex flex-col items-center justify-evenly">
     <div class="flex flex-col items-center justify-center">
       <img
         class="rounded-full w-32"
@@ -210,8 +210,8 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
           ></UButton>
         </template>
       </div>
-
-      <Footer class="fixed bottom-4"></Footer>
     </div>
+
+    <Footer></Footer>
   </div>
 </template>
