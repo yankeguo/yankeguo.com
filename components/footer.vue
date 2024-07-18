@@ -20,8 +20,8 @@ function setLanguage(lang: string) {
 </script>
 
 <template>
-  <div>
-    <div class="mb-2 flex flex-row justify-center items-center">
+  <div class="flex flex-col gap-3">
+    <div class="flex flex-row justify-center items-center">
       <ClientOnly>
         <!-- i18n -->
         <template v-for="(item, idx) in $langs">
@@ -51,13 +51,13 @@ function setLanguage(lang: string) {
         />
 
         <template #fallback>
-          <div class="w-8 h-8" />
+          <div class="w-8 h-8"></div>
         </template>
       </ClientOnly>
     </div>
 
     <div
-      class="flex flex-row justify-center items-center text-slate-400 text-sm mt-3"
+      class="flex flex-row justify-center items-center text-slate-400 text-sm"
     >
       Copyright &copy; {{ year }} {{ $t("copyright") }}
     </div>

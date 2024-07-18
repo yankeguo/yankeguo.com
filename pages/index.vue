@@ -134,14 +134,14 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
   </Html>
 
   <div class="m-0 h-screen flex flex-col items-center justify-evenly">
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center gap-4">
       <img
         class="rounded-full w-32"
         src="~/assets/avatar-cartoon.jpg"
         alt="photo of me"
       />
 
-      <div class="mt-8 flex flex-row justify-center items-baseline">
+      <div class="flex flex-row justify-center items-baseline">
         <span class="font-bold text-3xl">Yanke Guo</span>
         <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
           >({{ $t("pronouns") }})</span
@@ -149,7 +149,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
       </div>
 
       <div
-        class="mt-4 mb-4 flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+        class="flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
       >
         <div class="flex flex-row items-center">
           <UIcon name="i-heroicons-map-pin"></UIcon>
@@ -163,8 +163,10 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
           </ClientOnly>
         </div>
       </div>
+    </div>
 
-      <div class="flex flex-row items-center justify-center mb-3">
+    <div class="flex flex-col items-center justify-center gap-4">
+      <div class="flex flex-row items-center justify-center">
         <UBadge color="lime" variant="outline">NFT</UBadge>
         <UButton
           color="lime"
@@ -179,7 +181,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
       </div>
 
       <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
-        <div class="mb-3 flex flex-row justify-center items-center">
+        <div class="flex flex-row justify-center items-center">
           <UButton
             v-for="(item, idx) in group"
             v-bind:key="idx + '.' + groupIdx"
@@ -192,7 +194,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
         </div>
       </template>
 
-      <div class="flex flex-row justify-center items-center my-1">
+      <div class="flex flex-row justify-center items-center">
         <UBadge class="me-2" variant="outline" color="orange">{{
           $t("donation")
         }}</UBadge>
