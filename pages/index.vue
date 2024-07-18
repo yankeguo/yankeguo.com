@@ -166,20 +166,6 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
     </div>
 
     <div class="flex flex-col items-center justify-center gap-4">
-      <div class="flex flex-row items-center justify-center">
-        <UBadge color="lime" variant="outline">NFT</UBadge>
-        <UButton
-          color="lime"
-          variant="link"
-          :to="hrefAirdrop"
-          :external="true"
-          target="_blank"
-        >
-          <img src="~/assets/token-icon.svg" class="w-5" />
-          <span>Token of Gratitude by Yanke Guo</span>
-        </UButton>
-      </div>
-
       <template v-for="(group, groupIdx) in linksSocial" v-bind:key="groupIdx">
         <div class="flex flex-row justify-center items-center">
           <UButton
@@ -211,6 +197,20 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
             target="_blank"
           ></UButton>
         </template>
+      </div>
+
+      <div class="flex flex-row items-center justify-center">
+        <UBadge color="lime" variant="outline">NFT</UBadge>
+        <UButton
+          color="lime"
+          variant="link"
+          :to="hrefAirdrop"
+          :external="true"
+          target="_blank"
+        >
+          <img src="~/assets/token-icon.svg" class="w-5" />
+          <span>Token of Gratitude by Yanke Guo</span>
+        </UButton>
       </div>
     </div>
 
