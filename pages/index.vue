@@ -133,41 +133,39 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
     </Head>
   </Html>
 
-  <div class="m-0 h-screen flex flex-col items-center justify-evenly">
-    <div class="flex flex-col items-center justify-center gap-8">
-      <div class="flex flex-col items-center justify-center gap-4">
-        <img
-          class="rounded-full w-32"
-          src="~/assets/avatar-cartoon.jpg"
-          alt="photo of me"
-        />
+  <UContainer class="h-screen flex flex-col items-center justify-evenly">
+    <div class="flex flex-col items-center justify-center gap-4">
+      <img
+        class="rounded-full w-32"
+        src="~/assets/avatar-cartoon.jpg"
+        alt="photo of me"
+      />
 
-        <div class="flex flex-row justify-center items-baseline">
-          <span class="font-bold text-3xl">Yanke Guo</span>
-          <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
-            >({{ $t("pronouns") }})</span
-          >
-        </div>
-
-        <div
-          class="flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+      <div class="flex flex-row justify-center items-baseline">
+        <span class="font-bold text-3xl">Yanke Guo</span>
+        <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
+          >({{ $t("pronouns") }})</span
         >
-          <div class="flex flex-row items-center">
-            <UIcon name="i-heroicons-map-pin"></UIcon>
-            <span class="ms-1">{{ $t("location") }}</span>
-          </div>
-
-          <div class="flex flex-row items-center ms-4">
-            <UIcon name="i-heroicons-clock"></UIcon>
-            <ClientOnly>
-              <span class="ms-1">{{ localTime }}</span>
-            </ClientOnly>
-          </div>
-        </div>
       </div>
 
-      <UDivider></UDivider>
+      <div
+        class="flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+      >
+        <div class="flex flex-row items-center">
+          <UIcon name="i-heroicons-map-pin"></UIcon>
+          <span class="ms-1">{{ $t("location") }}</span>
+        </div>
 
+        <div class="flex flex-row items-center ms-4">
+          <UIcon name="i-heroicons-clock"></UIcon>
+          <ClientOnly>
+            <span class="ms-1">{{ localTime }}</span>
+          </ClientOnly>
+        </div>
+      </div>
+    </div>
+    <UDivider></UDivider>
+    <div class="flex flex-col items-center justify-center gap-8">
       <div class="flex flex-col items-center justify-center gap-4">
         <template
           v-for="(group, groupIdx) in linksSocial"
@@ -221,6 +219,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
       </div>
     </div>
 
+    <UDivider></UDivider>
     <Footer></Footer>
-  </div>
+  </UContainer>
 </template>
