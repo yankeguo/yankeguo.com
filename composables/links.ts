@@ -18,6 +18,7 @@ export const addressSolana = '9keVSx1xT1ev8GWwJrsTjtFYPxKx7XxqumHY3RTAohtc';
 
 export const hrefBitcoin = `https://www.blockchain.com/btc/address/${addressBitcoin}`;
 export const hrefEthereum = `https://etherscan.io/address/${addressEthereum}`;
+export const hrefSolana = 'https://dial.to/?action=solana-action%3Ahttps%3A%2F%2Fyankeguo.com%2Fapi%2Fsolana%2Factions%2Fdonate&cluster=mainnet';
 export const hrefOpenSea = "https://opensea.io/collection/shenzhen-b-side";
 export const hrefHuggingFace = "https://huggingface.co/yankeguo";
 export const hrefTwitter = "https://x.com/yankeguo";
