@@ -35,7 +35,7 @@ function setLanguage(lang: string) {
           >
             <span>{{ $langNames[item] }}</span>
           </a>
-          <i class="i-bi-dot text-slate-400" />
+          <UIcon name="i-bi-dot" class="text-slate-400"></UIcon>
         </template>
 
         <UButton
