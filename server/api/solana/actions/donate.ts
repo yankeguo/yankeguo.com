@@ -1,7 +1,6 @@
-const DESTINATION_ACCOUNT = '9keVSx1xT1ev8GWwJrsTjtFYPxKx7XxqumHY3RTAohtc';
-
 import { ActionGetResponse, ActionPostResponse } from '@solana/actions';
 import * as web3 from '@solana/web3.js';
+import { addressSolana } from '~/composables/links';
 import { encodeBase64 } from '~/utils/encode';
 
 export default defineEventHandler(async (event) => {
@@ -35,7 +34,7 @@ export default defineEventHandler(async (event) => {
         const connection = new web3.Connection(solanaEndpoint);
         const blockhash = await connection.getLatestBlockhash({ commitment: 'max' });
         const fromPubkey = new web3.PublicKey(account);
-        const toPubkey = new web3.PublicKey(DESTINATION_ACCOUNT);
+        const toPubkey = new web3.PublicKey(addressSolana);
 
         const transferIx = web3.SystemProgram.transfer({
             fromPubkey,
