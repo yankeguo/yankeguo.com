@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
             tx => web3.appendTransactionMessageInstructions([
                 getTransferSolInstruction({
                     source: accountSource, destination: accountDestination,
-                    amount: web3.lamports(BigInt(amount)),
+                    amount: Number(amount),
                 })
             ], tx)
         )
