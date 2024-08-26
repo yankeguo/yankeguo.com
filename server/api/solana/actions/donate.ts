@@ -1,4 +1,4 @@
-const DESTINATION_ACCOUNT = 'A2HHDZNHkcW6nvt4u9V5noEsq4cuHdfDYzYXzoQE7dDy';
+const DESTINATION_ACCOUNT = '9keVSx1xT1ev8GWwJrsTjtFYPxKx7XxqumHY3RTAohtc';
 
 import * as web3 from '@solana/web3.js';
 import { getTransferSolInstruction } from '@solana-program/system';
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
             tx => web3.appendTransactionMessageInstructions([
                 getTransferSolInstruction({
                     source: accountSource, destination: accountDestination,
-                    amount: Number(amount),
+                    amount: BigInt(Math.floor(Number(amount)) * 1_000_000),
                 })
             ], tx)
         )
