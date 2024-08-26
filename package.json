@@ -21,6 +21,7 @@
     "@iconify-json/simple-icons": "^1.1.114",
     "@nuxt/ui": "^2.18.4",
     "@opentelemetry/api": "^1.9.0",
+    "@solana/actions": "^1.6.2",
     "@solana/web3.js": "^1.95.3",
     "@tailwindcss/typography": "^0.5.14"
   }

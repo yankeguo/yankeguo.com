@@ -1,12 +1,14 @@
 const DESTINATION_ACCOUNT = '9keVSx1xT1ev8GWwJrsTjtFYPxKx7XxqumHY3RTAohtc';
 
+import { ActionGetResponse, ActionPostResponse } from '@solana/actions';
 import * as web3 from '@solana/web3.js';
 import { encodeBase64 } from '~/utils/encode';
 
 export default defineEventHandler(async (event) => {
     if (handleCors(event, {
         origin: '*',
-        methods: ['GET', 'POST'],
+        methods: '*',
+        maxAge: '604800',
     })) {
         return;
     }
@@ -51,7 +53,7 @@ export default defineEventHandler(async (event) => {
 
         return {
             transaction: encodeBase64(buf),
-        }
+        } as ActionPostResponse
     } else {
         return {
             type: 'action',
@@ -88,6 +90,6 @@ export default defineEventHandler(async (event) => {
                     }
                 ]
             }
-        }
+        } as ActionGetResponse
     }
 })
