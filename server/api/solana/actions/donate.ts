@@ -1,7 +1,6 @@
 const DESTINATION_ACCOUNT = '9keVSx1xT1ev8GWwJrsTjtFYPxKx7XxqumHY3RTAohtc';
 
 import * as web3 from '@solana/web3.js';
-import { getTransferSolInstruction } from '@solana-program/system';
 import { encodeBase64 } from '~/utils/encode';
 
 export default defineEventHandler(async (event) => {
@@ -30,25 +29,25 @@ export default defineEventHandler(async (event) => {
         }
 
         const { solanaEndpoint } = useRuntimeConfig();
-        const rpc = web3.createSolanaRpc(solanaEndpoint);
-        const { value: latestBlockhash } = await rpc.getLatestBlockhash().send()
 
-        const accountSource = web3.address(account)
-        const accountDestination = web3.address(DESTINATION_ACCOUNT);
+        const connection = new web3.Connection(solanaEndpoint);
+        const blockhash = await connection.getLatestBlockhash({ commitment: 'max' });
+        const fromPubkey = new web3.PublicKey(account);
+        const toPubkey = new web3.PublicKey(DESTINATION_ACCOUNT);
 
-        const transaction = web3.pipe(
-            web3.createTransactionMessage({ version: 0 }),
-            tx => web3.setTransactionMessageFeePayer(accountSource, tx),
-            tx => web3.setTransactionMessageLifetimeUsingBlockhash(latestBlockhash, tx),
-            tx => web3.appendTransactionMessageInstructions([
-                getTransferSolInstruction({
-                    source: accountSource, destination: accountDestination,
-                    amount: BigInt(Math.floor(Number(amount)) * 1_000_000),
-                })
-            ], tx)
-        )
+        const transferIx = web3.SystemProgram.transfer({
+            fromPubkey,
+            toPubkey,
+            lamports: Math.floor(web3.LAMPORTS_PER_SOL * parseFloat(amount)),
+        })
 
-        const buf = web3.getCompiledTransactionMessageEncoder().encode(web3.compileTransactionMessage(transaction))
+        const message = new web3.TransactionMessage({
+            payerKey: fromPubkey,
+            recentBlockhash: blockhash.blockhash,
+            instructions: [transferIx],
+        }).compileToV0Message();
+
+        const buf = new web3.VersionedTransaction(message).serialize();
 
         return {
             transaction: encodeBase64(buf),
@@ -75,7 +74,7 @@ export default defineEventHandler(async (event) => {
                         href: '/api/solana/actions/donate?amount=0.1',
                     },
                     {
-                        label: 'Donate Custom Amount',
+                        label: 'Donate',
                         href: '/api/solana/actions/donate?amount={amount}',
                         parameters: [
                             {
