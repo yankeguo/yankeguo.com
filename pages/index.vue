@@ -141,7 +141,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
 
   <UContainer class="h-screen flex flex-col items-center justify-evenly">
     <div class="flex flex-col items-center justify-center gap-4">
-      <img class="rounded-full w-32" src="~/assets/avatar-cartoon.jpg" alt="photo of me" />
+      <img class="rounded-full w-32" src="~/assets/avatar-redraw.jpg" alt="photo of me" />
 
       <div class="flex flex-row justify-center items-baseline">
         <span class="font-bold text-3xl">Yanke Guo</span>

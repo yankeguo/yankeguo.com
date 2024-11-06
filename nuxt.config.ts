@@ -10,12 +10,12 @@ export default defineNuxtConfig({
         {
           key: "link-manifest",
           rel: "manifest",
-          href: "/manifest-v1.json",
+          href: "/manifest-v2.json",
         },
         {
           key: "link-icon",
           rel: "icon",
-          href: "/favicon-v1.ico",
+          href: "/favicon-v2.ico",
         },
       ],
     },
