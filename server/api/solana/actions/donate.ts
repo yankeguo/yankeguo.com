@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
     } else {
         return {
             type: 'action',
-            icon: 'https://yankeguo.com/favicon-512-v1.png',
+            icon: 'https://yankeguo.com/favicon-512-v2.png',
             title: 'Donate',
             description: 'Donate to support Yanke G.',
             label: 'Donate',
