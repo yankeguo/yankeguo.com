@@ -14,7 +14,7 @@ export const hrefTelegram = `https://t.me/${username}`;
 
 export const addressBitcoin = "bc1qc3mk9xku6ft7pmxmfmejk46ca7a8shdqc8443s";
 export const addressEthereum = "0x6384b4700Ccb0F09Ef217135d42abFE5Cd98Cf0c";
-export const addressSolana = '9keVSx1xT1ev8GWwJrsTjtFYPxKx7XxqumHY3RTAohtc';
+export const addressSolana = 'A2HHDZNHkcW6nvt4u9V5noEsq4cuHdfDYzYXzoQE7dDy';
 
 export const hrefBitcoin = `https://www.blockchain.com/btc/address/${addressBitcoin}`;
 export const hrefEthereum = `https://etherscan.io/address/${addressEthereum}`;
