@@ -1,25 +1,23 @@
 <script setup lang="ts">
 const { $t } = useNuxtApp();
+definePageMeta({
+    layout: 'fullscreen',
+})
 </script>
 
 <template>
-    <Html :lang="$lang">
 
     <Head>
         <Title>Yanke Guo / Solana Donation</Title>
     </Head>
 
-    </Html>
-
-
-    <UContainer class="h-screen flex flex-col items-center justify-evenly">
-        <div class="flex flex-col items-center justify-center gap-4">
-            <p>
-                Send some SOL to the following address
-            </p>
-            <p class="font-mono font-semibold text-lg">
-                {{ addressSolana }}
-            </p>
-        </div>
-    </UContainer>
+    <div class="flex flex-col items-center justify-center gap-8">
+        <p>
+            {{ $t('donateSolana') }}
+        </p>
+        <p class="font-mono font-semibold text-lg">
+            {{ addressSolana }}
+        </p>
+        <UButton variant="link" to="/" icon="i-heroicons-chevron-double-left" :label="$t('back')"></UButton>
+    </div>
 </template>

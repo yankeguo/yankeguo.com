@@ -9,6 +9,8 @@ const en = {
   nft: "NFT",
   copyright: "All Rights Reserved",
   location: "Shenzhen, China",
+  back: 'Back',
+  donateSolana: 'Send some SOL to',
 };
 
 const zh: typeof en = {
@@ -18,6 +20,8 @@ const zh: typeof en = {
   donation: "赞助",
   nft: "NFT",
   copyright: "保留所有权利",
+  back: '返回',
+  donateSolana: '发送SOL到',
 };
 
 const i18nData: {
