@@ -12,7 +12,7 @@ export const hrefPatreon = `https://www.patreon.com/${username}`;
 export const hrefPatreonMembership = `https://www.patreon.com/${username}/membership`;
 export const hrefTelegram = `https://t.me/${username}`;
 
-export const addressBitcoin = "bc1qc3mk9xku6ft7pmxmfmejk46ca7a8shdqc8443s";
+export const addressBitcoin = "bc1qz6v2xxupx3a3e2juwjdytszmxwa2azq3yd4t40";
 export const addressEthereum = "0x6384b4700Ccb0F09Ef217135d42abFE5Cd98Cf0c";
 export const addressSolana = 'A2HHDZNHkcW6nvt4u9V5noEsq4cuHdfDYzYXzoQE7dDy';
 
