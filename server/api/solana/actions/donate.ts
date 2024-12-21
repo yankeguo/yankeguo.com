@@ -14,6 +14,11 @@ export default defineEventHandler(async (event) => {
 
     const { amount } = getQuery(event);
 
+    setResponseHeaders(event, {
+        'X-Action-Version': '2.1.3',
+        'X-Blockchain-Ids': 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
+    })
+
     if (event.method === 'POST') {
         if (typeof amount !== 'string' || !amount) {
             setResponseStatus(event, 400);
