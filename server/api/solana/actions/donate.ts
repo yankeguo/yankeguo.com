@@ -8,6 +8,9 @@ export default defineEventHandler(async (event) => {
         origin: '*',
         methods: '*',
         maxAge: '604800',
+        preflight: {
+            statusCode: 204,
+        }
     })) {
         return;
     }
