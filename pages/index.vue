@@ -12,6 +12,7 @@ type Link = {
   label?: string;
   icon: string;
   to: string;
+  internal?: boolean;
 };
 
 const linksSocial: Link[][] = [
@@ -115,8 +116,7 @@ const linksDonations: Link[][] = [
     },
     {
       icon: 'i-simple-icons-solana',
-      to: '/solana/actions/donate',
-      internal: true,
+      to: hrefSolana,
     }
   ],
 ];
@@ -135,7 +135,7 @@ const linksDonations: Link[][] = [
       <div class="flex flex-row justify-center items-center">
         <UBadge class="me-2" variant="outline" color="orange">{{
           $t("donation")
-        }}</UBadge>
+          }}</UBadge>
         <template v-for="(itemGroup, idxGroup) in linksDonations">
           <UButton color="orange" v-for="(item, idx) in itemGroup" v-bind:key="idx" size="sm" variant="ghost"
             :label="item.label" :icon="item.icon" :to="item.to" :target="item.internal ? '' : '_blank'"></UButton>
