@@ -1,6 +1,6 @@
 import { ActionGetResponse, ActionPostResponse } from '@solana/actions';
 import * as web3 from '@solana/web3.js';
-import { addressSolana } from '~/composables/links';
+import { addressSolana, hrefAvatarAbsoluteURL } from '~/composables/links';
 import { encodeBase64 } from '~/utils/encode';
 
 export default defineEventHandler(async (event) => {
@@ -64,9 +64,9 @@ export default defineEventHandler(async (event) => {
     } else {
         return {
             type: 'action',
-            icon: 'https://yankeguo.com/favicon-512-v2.png',
+            icon: hrefAvatarAbsoluteURL,
             title: 'Donate',
-            description: 'Donate to support Yanke G.',
+            description: 'Donate to support Yanke Guo',
             label: 'Donate',
             links: {
                 actions: [

@@ -34,3 +34,5 @@ export const hrefThreads = `https://www.threads.net/@${username}`;
 export const hrefDiscord = "https://discordapp.com/users/1065517056755245086";
 
 export const hrefAirdrop = "https://airdrop.yankeguo.com";
+
+export const hrefAvatarAbsoluteURL = `https://yankeguo.com/favicon-512-v2.png`;

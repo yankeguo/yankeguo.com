@@ -9,6 +9,10 @@ definePageMeta({
 
     <Head>
         <Title>Yanke Guo / Solana Donation</Title>
+
+        <meta property="og:title" content="Yanke Guo / Solana Donation" />
+        <meta property="og:description" content="Donate Solana to Yanke Guo" />
+        <meta property="og:image" :content="hrefAvatarAbsoluteURL" />
     </Head>
 
     <div class="flex flex-col items-center justify-center gap-8">
