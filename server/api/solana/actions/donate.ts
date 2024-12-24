@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
         const { solanaEndpoint } = useRuntimeConfig();
 
         const connection = new web3.Connection(solanaEndpoint);
-        const blockhash = await connection.getLatestBlockhash({ commitment: 'max' });
+        const blockhash = await connection.getLatestBlockhash({ commitment: 'confirmed' });
         const fromPubkey = new web3.PublicKey(account);
         const toPubkey = new web3.PublicKey(addressSolana);
 
