@@ -27,6 +27,7 @@
     "composables",
     "LAMPORTS",
     "lastwill",
+    "Nuxt",
     "solana"
   ]
 }

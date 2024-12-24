@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useInterval } from "@vueuse/core";
 import { hrefAirdrop } from "~/composables/links";
 
 definePageMeta({
@@ -135,7 +134,7 @@ const linksDonations: Link[][] = [
       <div class="flex flex-row justify-center items-center">
         <UBadge class="me-2" variant="outline" color="orange">{{
           $t("donation")
-          }}</UBadge>
+        }}</UBadge>
         <template v-for="(itemGroup, idxGroup) in linksDonations">
           <UButton color="orange" v-for="(item, idx) in itemGroup" v-bind:key="idx" size="sm" variant="ghost"
             :label="item.label" :icon="item.icon" :to="item.to" :target="item.internal ? '' : '_blank'"></UButton>
