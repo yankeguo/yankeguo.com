@@ -132,15 +132,14 @@ const linksDonations: Link[][] = [
       </template>
 
       <div class="flex flex-row justify-center items-center">
-        <UBadge class="me-2" variant="outline" color="orange">{{
-          $t("donation")
-        }}</UBadge>
+        <UBadge class="me-2" variant="outline" color="orange">{{ $t("donation") }}</UBadge>
         <template v-for="(itemGroup, idxGroup) in linksDonations">
           <UButton color="orange" v-for="(item, idx) in itemGroup" v-bind:key="idx" size="sm" variant="ghost"
             :label="item.label" :icon="item.icon" :to="item.to" :target="item.internal ? '' : '_blank'"></UButton>
         </template>
       </div>
 
+      <!--
       <div class="flex flex-row items-center justify-center">
         <UBadge color="lime" variant="outline">NFT</UBadge>
         <UButton color="lime" variant="link" :to="hrefAirdrop" :external="true" target="_blank">
@@ -148,6 +147,7 @@ const linksDonations: Link[][] = [
           <span>Token of Gratitude by Yanke Guo</span>
         </UButton>
       </div>
+      -->
     </div>
   </div>
 </template>

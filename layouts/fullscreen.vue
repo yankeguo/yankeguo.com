@@ -27,7 +27,7 @@ watch(localTimeUpdater, updateLocalTime, { immediate: true });
 
   </Html>
 
-  <UContainer class="h-screen flex flex-col items-center justify-evenly">
+  <UContainer class="h-screen flex flex-col items-center justify-center gap-8">
     <div class="flex flex-col items-center justify-center gap-4">
       <img class="rounded-full w-32" src="~/assets/avatar-redraw.jpg" alt="photo of me" />
 
