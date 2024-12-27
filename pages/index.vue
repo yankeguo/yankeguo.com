@@ -52,7 +52,7 @@ const linksSocial: Link[][] = [
     },
     {
       label: "Huggingface",
-      icon: "i-noto-v1-hugging-face",
+      icon: "i-simple-icons-huggingface",
       to: hrefHuggingFace,
     },
     {

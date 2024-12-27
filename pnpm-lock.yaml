@@ -11,9 +11,6 @@ importers:
       '@iconify-json/bi':
         specifier: ^1.2.2
         version: 1.2.2
-      '@iconify-json/noto-v1':
-        specifier: ^1.2.1
-        version: 1.2.1
       '@iconify-json/simple-icons':
         specifier: ^1.2.17
         version: 1.2.17
@@ -524,9 +521,6 @@ packages:
 
   '@iconify-json/heroicons@1.2.2':
     resolution: {integrity: sha512-qoW4pXr5kTTL6juEjgTs83OJIwpePu7q1tdtKVEdj+i0zyyVHgg/dd9grsXJQnpTpBt6/VwNjrXBvFjRsKPENg==}
-
-  '@iconify-json/noto-v1@1.2.1':
-    resolution: {integrity: sha512-sq1DyXEv1Qk2whPsZxsygB1cdDh5OlonSOk0mdmOyVXqLPwTINyep2NPLDR0iKCkrA3vKEPIU34Eso6+tquBWw==}
 
   '@iconify-json/simple-icons@1.2.17':
     resolution: {integrity: sha512-1vXbM6a6HV2rwXxu8ptD2OYhqrqX0ZZRepOg7nIjkvKlKq90Iici4X++A8h36bEVlV2wGjqx8uVYB0pwnPZVSw==}
@@ -4181,10 +4175,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/heroicons@1.2.2':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/noto-v1@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
