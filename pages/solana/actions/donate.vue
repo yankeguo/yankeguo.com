@@ -16,12 +16,13 @@ definePageMeta({
     </Head>
 
     <div class="flex flex-col items-center justify-center gap-8">
-        <p>
-            {{ $t('donateSolana') }}
-        </p>
+        <UButton size="lg" variant="link" to="/" icon="i-heroicons-chevron-double-left" :label="$t('back')"></UButton>
+        <div class="flex flex-row items-center">
+            <UBadge class="me-2" variant="outline" color="orange">{{ $t("donation") }}</UBadge>
+            <span class="text-orange-400">{{ $t('donateSolana') }}</span>
+        </div>
         <p class="font-mono font-semibold text-lg">
             {{ addressSolana }}
         </p>
-        <UButton variant="link" to="/" icon="i-heroicons-chevron-double-left" :label="$t('back')"></UButton>
     </div>
 </template>
