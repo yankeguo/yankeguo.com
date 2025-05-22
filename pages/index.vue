@@ -208,8 +208,7 @@ const isScrolled = computed(() => scrollY.value > 100);
     <!-- Photos -->
     <div
       :class="[
-        'grid grid-cols-2 lg:grid-cols-4 py-8 gap-4 transition-all duration-500 min-h-[calc(100vh+12rem)]',
-        isScrolled ? 'content-start' : 'content-center',
+        'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-8 gap-8 lg:gap-4 transition-all duration-500 min-h-[calc(100vh+12rem)] content-start',
       ]"
     >
       <div
