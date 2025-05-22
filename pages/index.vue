@@ -133,16 +133,30 @@ const isScrolled = computed(() => scrollY.value > 100);
             ]"
           >
             <!-- Name -->
-            <div class="flex flex-row justify-center items-baseline">
-              <span class="font-bold text-3xl">Yan-Ke Guo</span>
-              <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
+            <div class="flex flex-row justify-center items-baseline mb-2">
+              <span
+                :class="[
+                  'font-bold transition-all duration-300',
+                  isScrolled ? 'text-xl' : 'text-3xl',
+                ]"
+                >Yan-Ke Guo</span
+              >
+              <span
+                :class="[
+                  'ms-2 transition-all duration-300',
+                  isScrolled ? 'text-xs' : 'text-sm',
+                  'text-slate-600 dark:text-slate-400',
+                ]"
                 >({{ $t("pronouns") }})</span
               >
             </div>
 
             <!-- Location -->
             <div
-              class="flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+              :class="[
+                'flex flex-row justify-center items-center text-slate-600 dark:text-slate-400 transition-all duration-300',
+                isScrolled ? 'text-xs' : 'text-sm mt-1',
+              ]"
             >
               <div class="flex flex-row items-center">
                 <UIcon name="i-heroicons-map-pin"></UIcon>
