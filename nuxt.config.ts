@@ -25,6 +25,5 @@ export default defineNuxtConfig({
   runtimeConfig: {
     lastwillGitHubToken: process.env.LASTWILL_GITHUB_TOKEN,
     lastwillToken: process.env.LASTWILL_TOKEN,
-    solanaEndpoint: process.env.SOLANA_ENDPOINT,
   },
 });

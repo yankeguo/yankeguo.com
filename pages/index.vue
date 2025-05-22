@@ -23,34 +23,32 @@ type Link = {
   to: string;
 };
 
-const linksSocial: Link[][] = [
-  [
-    {
-      label: "Email",
-      icon: "i-heroicons-envelope",
-      to: hrefMail,
-    },
-    {
-      label: "GPG",
-      icon: "i-heroicons-lock-closed",
-      to: hrefGPG,
-    },
-    {
-      icon: "i-simple-icons-x",
-      label: "X",
-      to: hrefTwitter,
-    },
-    {
-      label: "GitHub",
-      icon: "i-simple-icons-github",
-      to: hrefGithub,
-    },
-    {
-      label: $t("lastwill"),
-      icon: "i-heroicons-light-bulb",
-      to: hrefLastWill,
-    },
-  ],
+const linksSocial: Link[] = [
+  {
+    label: "Email",
+    icon: "i-heroicons-envelope",
+    to: hrefMail,
+  },
+  {
+    label: "GPG",
+    icon: "i-heroicons-lock-closed",
+    to: hrefGPG,
+  },
+  {
+    icon: "i-simple-icons-x",
+    label: "X",
+    to: hrefTwitter,
+  },
+  {
+    label: "GitHub",
+    icon: "i-simple-icons-github",
+    to: hrefGithub,
+  },
+  {
+    label: $t("lastwill"),
+    icon: "i-heroicons-light-bulb",
+    to: hrefLastWill,
+  },
 ];
 </script>
 
@@ -94,22 +92,17 @@ const linksSocial: Link[][] = [
 
     <div class="flex flex-col items-center justify-center gap-8">
       <div class="flex flex-col items-center justify-center gap-4">
-        <template
-          v-for="(group, groupIdx) in linksSocial"
-          v-bind:key="groupIdx"
-        >
-          <div class="flex flex-row justify-center items-center">
-            <UButton
-              v-for="(item, idx) in group"
-              v-bind:key="idx + '.' + groupIdx"
-              variant="ghost"
-              :icon="item.icon"
-              color="neutral"
-              :to="item.to"
-              target="_blank"
-            ></UButton>
-          </div>
-        </template>
+        <div class="flex flex-row justify-center items-center">
+          <UButton
+            v-for="(item, idx) in linksSocial"
+            v-bind:key="'link-social-' + idx"
+            variant="ghost"
+            :icon="item.icon"
+            color="neutral"
+            :to="item.to"
+            target="_blank"
+          ></UButton>
+        </div>
       </div>
     </div>
     <Footer></Footer>
