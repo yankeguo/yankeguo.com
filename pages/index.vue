@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useInterval } from "@vueuse/core";
+import { useInterval, useScroll, useWindowScroll } from "@vueuse/core";
 
 const { $t } = useNuxtApp();
 
@@ -15,34 +15,6 @@ function updateLocalTime() {
 }
 
 watch(localTimeUpdater, updateLocalTime, { immediate: true });
-
-const isScrolled = ref(false);
-const headerHeight = ref("100vh");
-
-let scrollTicking = false;
-
-const handleScroll = () => {
-  if (!scrollTicking) {
-    window.requestAnimationFrame(() => {
-      const scrollRatio = Math.max(
-        0,
-        1 - window.scrollY / (window.innerHeight * 0.5),
-      );
-      headerHeight.value = `${Math.max(40, scrollRatio * 100)}vh`;
-      isScrolled.value = window.scrollY > 50;
-      scrollTicking = false;
-    });
-    scrollTicking = true;
-  }
-};
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
 
 type Link = {
   label?: string;
@@ -97,6 +69,9 @@ const linksPhotos: {
     title: "2025-05-21: Cloudy Day",
   },
 ];
+
+const { y: scrollY } = useWindowScroll();
+const isScrolled = computed(() => scrollY.value > 100);
 </script>
 
 <template>
@@ -107,44 +82,93 @@ const linksPhotos: {
   </Html>
 
   <UContainer class="flex flex-col">
+    <!-- Spacer with reduced height -->
     <div
-      :style="{ height: headerHeight }"
-      class="flex flex-col items-center justify-center gap-8 transition-[height] duration-300"
+      :class="[
+        'transition-[height] duration-200',
+        isScrolled ? 'h-[calc(25vh)]' : 'h-[calc(75vh)]',
+      ]"
+    ></div>
+
+    <!-- Header -->
+    <div
+      :class="[
+        'transition-all duration-300 w-full',
+        isScrolled
+          ? 'fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md py-4 px-8'
+          : 'absolute top-0 left-0 right-0 h-[calc(75vh)] flex items-center justify-center',
+      ]"
     >
-      <div class="flex flex-col items-center justify-center gap-4">
-        <img
-          class="rounded-full w-32"
-          src="~/assets/avatar-redraw.jpg"
-          alt="photo of me"
-        />
-
-        <div class="flex flex-row justify-center items-baseline">
-          <span class="font-bold text-3xl">Yan-Ke Guo</span>
-          <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
-            >({{ $t("pronouns") }})</span
-          >
-        </div>
-
+      <div
+        :class="[
+          'flex w-full',
+          isScrolled
+            ? 'flex-row items-center justify-between'
+            : 'flex-col items-center justify-center gap-8',
+        ]"
+      >
         <div
-          class="flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+          :class="[
+            'flex',
+            isScrolled
+              ? 'flex-row items-center gap-4'
+              : 'flex-col items-center justify-center gap-4',
+          ]"
         >
-          <div class="flex flex-row items-center">
-            <UIcon name="i-heroicons-map-pin"></UIcon>
-            <span class="ms-1">{{ $t("location") }}</span>
-          </div>
+          <!-- Avatar -->
+          <img
+            :class="[
+              'rounded-full transition-all duration-300',
+              isScrolled ? 'w-12' : 'w-32',
+            ]"
+            src="~/assets/avatar-redraw.jpg"
+            alt="photo of me"
+          />
 
-          <div class="flex flex-row items-center ms-4">
-            <UIcon name="i-heroicons-clock"></UIcon>
-            <ClientOnly>
-              <span class="ms-1">{{ localTime }}</span>
-            </ClientOnly>
+          <!-- Name and Location -->
+          <div
+            :class="[
+              'flex',
+              isScrolled ? 'flex-col items-start' : 'flex-col items-center',
+            ]"
+          >
+            <!-- Name -->
+            <div class="flex flex-row justify-center items-baseline">
+              <span class="font-bold text-3xl">Yan-Ke Guo</span>
+              <span class="ms-2 text-sm text-slate-600 dark:text-slate-400"
+                >({{ $t("pronouns") }})</span
+              >
+            </div>
+
+            <!-- Location -->
+            <div
+              class="flex flex-row justify-center items-center text-sm text-slate-600 dark:text-slate-400"
+            >
+              <div class="flex flex-row items-center">
+                <UIcon name="i-heroicons-map-pin"></UIcon>
+                <span class="ms-1">{{ $t("location") }}</span>
+              </div>
+
+              <div class="flex flex-row items-center ms-4">
+                <UIcon name="i-heroicons-clock"></UIcon>
+                <ClientOnly>
+                  <span class="ms-1">{{ localTime }}</span>
+                </ClientOnly>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="flex flex-col items-center justify-center gap-8">
-        <div class="flex flex-col items-center justify-center gap-4">
-          <div class="flex flex-row justify-center items-center">
+        <!-- Social Links -->
+        <div
+          :class="[
+            'flex',
+            isScrolled
+              ? 'flex-row items-center'
+              : 'flex-col items-center justify-center gap-8',
+          ]"
+        >
+          <div class="flex flex-row items-center gap-2">
             <UButton
               v-for="(item, idx) in linksSocial"
               v-bind:key="'link-social-' + idx"
@@ -159,21 +183,24 @@ const linksPhotos: {
       </div>
     </div>
 
+    <!-- Photos -->
     <div
-      :class="[
-        'grid grid-cols-2 lg:grid-cols-4 py-8 gap-4 transition-all duration-500',
-        !isScrolled ? 'h-screen' : 'h-auto',
-      ]"
+      class="grid grid-cols-2 lg:grid-cols-4 py-8 gap-4 transition-all duration-500 min-h-[calc(100vh+12rem)]"
     >
-      <div v-for="(item, idx) in linksPhotos" v-bind:key="'link-photo-' + idx">
+      <div
+        v-for="(item, idx) in linksPhotos"
+        v-bind:key="'link-photo-' + idx"
+        class="aspect-square"
+      >
         <UTooltip :text="item.title">
           <a :href="baseURLPhoto + item.id + '/standard'" target="_blank">
             <img
-              class="rounded-sm"
+              class="rounded-sm w-full h-full object-cover"
               :src="baseURLPhoto + item.id + '/thumb'"
               :alt="item.title"
-            /> </a
-        ></UTooltip>
+            />
+          </a>
+        </UTooltip>
       </div>
     </div>
 
