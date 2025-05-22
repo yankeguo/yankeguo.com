@@ -14,11 +14,12 @@ export const hrefTelegram = `https://t.me/${username}`;
 
 export const addressBitcoin = "bc1qz6v2xxupx3a3e2juwjdytszmxwa2azq3yd4t40";
 export const addressEthereum = "0x6384b4700Ccb0F09Ef217135d42abFE5Cd98Cf0c";
-export const addressSolana = 'A2HHDZNHkcW6nvt4u9V5noEsq4cuHdfDYzYXzoQE7dDy';
+export const addressSolana = "A2HHDZNHkcW6nvt4u9V5noEsq4cuHdfDYzYXzoQE7dDy";
 
 export const hrefBitcoin = `https://www.blockchain.com/btc/address/${addressBitcoin}`;
 export const hrefEthereum = `https://etherscan.io/address/${addressEthereum}`;
-export const hrefSolana = 'https://dial.to/?action=solana-action%3Ahttps%3A%2F%2Fyankeguo.com%2Fapi%2Fsolana%2Factions%2Fdonate&cluster=mainnet';
+export const hrefSolana =
+  "https://solscan.io/account/A2HHDZNHkcW6nvt4u9V5noEsq4cuHdfDYzYXzoQE7dDy";
 export const hrefOpenSea = "https://opensea.io/collection/shenzhen-b-side";
 export const hrefHuggingFace = "https://huggingface.co/yankeguo";
 export const hrefTwitter = "https://x.com/yankeguo";

@@ -42,8 +42,7 @@ function setLanguage(lang: string) {
           :icon="
             isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'
           "
-          size="2xs"
-          color="black"
+          color="neutral"
           variant="ghost"
           aria-label="Theme"
           :padded="false"
@@ -54,12 +53,6 @@ function setLanguage(lang: string) {
           <div class="w-8 h-8"></div>
         </template>
       </ClientOnly>
-    </div>
-
-    <div
-      class="flex flex-row justify-center items-center text-slate-400 text-sm"
-    >
-      Copyright &copy; {{ year }} {{ $t("copyright") }}
     </div>
   </div>
 </template>

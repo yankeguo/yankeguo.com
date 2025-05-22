@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-07-10",
   devtools: { enabled: true },
   modules: ["@nuxt/ui"],
+  css: ["~/assets/css/main.css"],
 
   app: {
     head: {
@@ -26,5 +27,4 @@ export default defineNuxtConfig({
     lastwillToken: process.env.LASTWILL_TOKEN,
     solanaEndpoint: process.env.SOLANA_ENDPOINT,
   },
-
 });
