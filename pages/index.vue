@@ -68,6 +68,10 @@ const linksPhotos: {
     id: "2c2d65e3-6b00-4bde-d962-7c03398a6700",
     title: "2025-05-21: Cloudy Day",
   },
+  {
+    id: "d2a0b4c3-e0f7-4f91-f3bb-db83b8e9c900",
+    title: "2025-05-21: Sculpture in the Park",
+  },
 ];
 
 const { y: scrollY } = useWindowScroll();
@@ -86,7 +90,7 @@ const isScrolled = computed(() => scrollY.value > 100);
     <div
       :class="[
         'transition-[height] duration-200',
-        isScrolled ? 'h-[calc(25vh)]' : 'h-[calc(75vh)]',
+        isScrolled ? 'h-[calc(32rem)]' : 'h-[calc(75vh)]',
       ]"
     ></div>
 
@@ -95,15 +99,15 @@ const isScrolled = computed(() => scrollY.value > 100);
       :class="[
         'transition-all duration-300 w-full',
         isScrolled
-          ? 'fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md py-4 px-8'
+          ? 'fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md py-4 px-4 sm:px-8'
           : 'absolute top-0 left-0 right-0 h-[calc(75vh)] flex items-center justify-center',
       ]"
     >
       <div
         :class="[
-          'flex w-full',
+          'flex w-full max-w-screen-xl mx-auto',
           isScrolled
-            ? 'flex-row items-center justify-between'
+            ? 'flex-col sm:flex-row items-center gap-4 sm:justify-between'
             : 'flex-col items-center justify-center gap-8',
         ]"
       >
@@ -111,7 +115,7 @@ const isScrolled = computed(() => scrollY.value > 100);
           :class="[
             'flex',
             isScrolled
-              ? 'flex-row items-center gap-4'
+              ? 'flex-row items-center gap-3 sm:gap-4'
               : 'flex-col items-center justify-center gap-4',
           ]"
         >
@@ -119,7 +123,7 @@ const isScrolled = computed(() => scrollY.value > 100);
           <img
             :class="[
               'rounded-full transition-all duration-300',
-              isScrolled ? 'w-12' : 'w-32',
+              isScrolled ? 'w-10 sm:w-12' : 'w-32',
             ]"
             src="~/assets/avatar-redraw.jpg"
             alt="photo of me"
@@ -129,7 +133,9 @@ const isScrolled = computed(() => scrollY.value > 100);
           <div
             :class="[
               'flex',
-              isScrolled ? 'flex-col items-start' : 'flex-col items-center',
+              isScrolled
+                ? 'flex-col items-center sm:items-start'
+                : 'flex-col items-center',
             ]"
           >
             <!-- Name -->
@@ -137,7 +143,7 @@ const isScrolled = computed(() => scrollY.value > 100);
               <span
                 :class="[
                   'font-bold transition-all duration-300',
-                  isScrolled ? 'text-xl' : 'text-3xl',
+                  isScrolled ? 'text-lg sm:text-xl' : 'text-3xl',
                 ]"
                 >Yan-Ke Guo</span
               >
@@ -155,7 +161,7 @@ const isScrolled = computed(() => scrollY.value > 100);
             <div
               :class="[
                 'flex flex-row justify-center items-center text-slate-600 dark:text-slate-400 transition-all duration-300',
-                isScrolled ? 'text-xs' : 'text-sm mt-1',
+                isScrolled ? 'text-xs hidden sm:flex' : 'text-sm mt-1',
               ]"
             >
               <div class="flex flex-row items-center">
@@ -182,7 +188,7 @@ const isScrolled = computed(() => scrollY.value > 100);
               : 'flex-col items-center justify-center gap-8',
           ]"
         >
-          <div class="flex flex-row items-center gap-2">
+          <div class="flex flex-row items-center gap-1 sm:gap-2">
             <UButton
               v-for="(item, idx) in linksSocial"
               v-bind:key="'link-social-' + idx"
@@ -190,6 +196,8 @@ const isScrolled = computed(() => scrollY.value > 100);
               :icon="item.icon"
               color="neutral"
               :to="item.to"
+              size="sm"
+              :class="[isScrolled ? 'sm:size-md' : '']"
               target="_blank"
             ></UButton>
           </div>
@@ -199,7 +207,10 @@ const isScrolled = computed(() => scrollY.value > 100);
 
     <!-- Photos -->
     <div
-      class="grid grid-cols-2 lg:grid-cols-4 py-8 gap-4 transition-all duration-500 min-h-[calc(100vh+12rem)]"
+      :class="[
+        'grid grid-cols-2 lg:grid-cols-4 py-8 gap-4 transition-all duration-500 min-h-[calc(100vh+12rem)]',
+        isScrolled ? 'content-start' : 'content-center',
+      ]"
     >
       <div
         v-for="(item, idx) in linksPhotos"
