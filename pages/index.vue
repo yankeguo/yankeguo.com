@@ -57,6 +57,26 @@ const linksPhotos: {
   title: string;
 }[] = [
   {
+    id: "4fe8d6cd-1652-4a18-28a4-3482b9189700",
+    title: "2025-05-25: Rotten Rose",
+  },
+  {
+    id: "4fa6ac5e-a352-4084-671c-bb017a423d00",
+    title: "2025-05-24: McDonalds Clown",
+  },
+  {
+    id: "ed0885d7-539f-47bc-36ce-5173458b1200",
+    title: "2025-05-24: Silk Flower",
+  },
+  {
+    id: "e7d60209-76c6-4577-b5e2-2fe3f4546100",
+    title: "2025-05-24",
+  },
+  {
+    id: "69c7e0d2-aa71-4913-1ee4-e2422d069500",
+    title: "2025-05-24: Shenzhen K11 Ecoast",
+  },
+  {
     id: "89e29364-a880-4a56-3271-210523e71800",
     title: "2025-05-22: Floating Chair Coffee",
   },
